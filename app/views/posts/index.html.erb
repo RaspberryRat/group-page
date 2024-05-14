@@ -1,16 +1,17 @@
-<h1>XX updates</h1>
-<br>
-<div class="new-link">
-  <%= link_to "New Post", new_post_path %>
-</div>
+<div class="flex-col"><h1>XX updates</h1>
+  <br>
+  <div class="new-link">
+    <%= link_to "New Post", new_post_path %>
+  </div>
 
-<ul>
-  <% @posts.each do |post| %>
-    <li>
-      <%= link_to post.title, post %>
-    </li>
-    <li>
-      <%= post.content %>
-    </li>
-  <% end %>
-</ul>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <%= link_to post.title, post %>
+      </li>
+      <li>
+        <%= post.content %>
+      </li>
+    <% end %>
+  </ul>
+</div>
