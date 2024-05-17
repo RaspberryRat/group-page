@@ -1,15 +1,18 @@
-<%= form_with model: post do |form| %>
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+<div class="pl-6 w-4/5"><%= form_with model: post do |form| %>
+    <div class="field flex flex-col mb-6">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.rich_text_area :content %>
-  </div>
+    <div class="field mb-6">
+      <%= form.label :content %>
+      <%= form.rich_text_area :content %>
+    </div>
 
-  <div class="field">
-    <%= form.submit %>
-  </div>
-<% end %>
+    <div class="field flex w-max
+      p-2 text-white rounded-2xl border-2 border-black
+      bg-blue-500 hover:bg-blue-600 active:bg-blue-700
+      focus:outline-white focus:ring focus:ring-violet-300">
+      <%= form.submit %>
+    </div>
+  <% end %></div>
