@@ -1,13 +1,23 @@
-<div class="flex-col">
+<div class="flex-col flex p-6 w-4/5">
 
-  <p><%= @post.title %></p>
+  <div class="flex flex-row justify-between mb-12">
+    <h2 class="text-4xl font-bold"><%= @post.title %></h2>
+    <div class="self-end italic text-sm">
+      <%= @post.created_at.strftime("%B %d, %Y") %>
+    </div>
+  </div>
 
-  <p><%= @post.content %></p>
+  <div class="pl-6 mb-6"><%= @post.content %></div>
 
-  <ul>
-    <li><%= link_to "Edit Post", edit_post_path(@post) %></li>
-    <li>
-      <%= link_to "Delete Post", post_path(@post),
+  <ul class="pl-6 flex flex-row gap-6">
+    <li class="p-2 text-white rounded-2xl border-2 border-black
+      bg-blue-500 hover:bg-blue-600 active:bg-blue-700
+      focus:outline-white focus:ring focus:ring-violet-300">
+      <%= button_to "Edit Post", edit_post_path(@post) %></li>
+    <li class="p-2 text-white rounded-2xl border-2 border-black
+      bg-blue-500 hover:bg-blue-600 active:bg-blue-700
+      focus:outline-white focus:ring focus:ring-violet-300">
+      <%= button_to "Delete Post", post_path(@post),
         data: { turbo_method: :delete,
                 turbo_confirm: "Are you sure you want to delete? This action cannot be undone."}%>
     </li>
