@@ -4,23 +4,23 @@
     <%= link_to "New Post", new_post_path %>
   </div>
 
-  <div class="pl-6 w-3/5">
+  <div class="pl-6 w-4/5">
     <% @posts.each do |post| %>
     <ul class="mb-16 flex flex-col justify-start">
       <li class="flex flex-row justify-between">
-        <div class="font-bold text-lg">
+        <div class="font-bold text-lg underline text-group-blue hover:text-blue-600 hover:text-xl">
           <%= link_to post.title, post %>
         </div>
         <div class="self-end italic text-sm">
           <%= post.created_at.strftime("%B %d, %Y") %>
         </div>
       </li>
-      <hr class="w-48 h-px mx-auto my-4 bg-gray-100 border-0 rounded md:my-4 dark:bg-gray-700">
+      <hr class="w-2/5 h-px mx-auto my-4 bg-gray-400 border-0 rounded md:my-4 dark:bg-gray-700">
        <li>
         <%= post.content %>
       </li>
     </ul>
-      <hr class="h-px my-12 bg-gray-200 border-0 dark:bg-gray-700">
+      <hr class="h-px my-12 bg-gray-300 border-0 dark:bg-gray-700">
     <% end %>
 
   </div>
