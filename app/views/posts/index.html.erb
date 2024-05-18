@@ -1,6 +1,6 @@
-<div class="flex-col flex"><h1 class="text-4xl font-bold mt-12 p-6">News</h1>
+<div class="flex-col flex w-4/5"><h1 class="text-4xl font-bold mt-12 p-6">News</h1>
 
-  <div class="mb-12 p-2 mr-48
+  <div class="mb-12 p-2
       text-white rounded-2xl border-2 border-black
       bg-blue-500 hover:bg-blue-600 active:bg-blue-700
       focus:outline-white focus:ring focus:ring-violet-300
@@ -8,7 +8,7 @@
     <%= link_to "New Post", new_post_path %>
   </div>
 
-  <div class="pl-6 w-4/5">
+  <div class="pl-6">
     <% @posts.each do |post| %>
     <ul class="mb-16 flex flex-col justify-start">
       <li class="flex flex-row justify-between">
