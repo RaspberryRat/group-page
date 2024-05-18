@@ -19,6 +19,11 @@
         </div>
 
         <ul class="flex flex-row gap-5 text-white justify-center pt-8">
+          <% if user_signed_in? && current_user.admin? %>
+            <li class="text-inherit hover:scale-125">
+              <%= link_to "User List", users_path  %>
+            </li>
+          <% end %>
           <li class="text-inherit hover:scale-125">Event Calendar</li>
           <li class="text-inherit hover:scale-125">Stewards</li>
           <li class="text-inherit hover:scale-125">Bargaining Team</li>
@@ -26,12 +31,22 @@
         </ul>
 
         <ul class="flex flex-row gap-3 text-white justify-center pt-8 mr-12">
-          <li class="hover:scale-125 text-inherit"><%= link_to "Log In", new_user_session_path %></li>
-          <li class="hover:scale-125 text-inherit"><%= link_to "Sign Up", new_user_registration_path %></li>
+          <% if user_signed_in? %>
+            <li class="hover:scale-125 text-inherit">
+              <%= button_to "Log Out", destroy_user_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li class="hover:scale-125 text-inherit">
+              <%= link_to "Log In", new_user_session_path %>
+            </li>
+          <% end %>
+          <li class="hover:scale-125 text-inherit">
+            <%= link_to "Sign Up", new_user_registration_path %>
+          </li>
         </ul>
       </nav>
 
-      <div class="pl-6 mt-12"> <%= yield %></div>
+      <div class="pl-6 mt-12"><%= yield %></div>
     </main>
   </body>
 </html>
