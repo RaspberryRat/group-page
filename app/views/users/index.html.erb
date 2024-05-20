@@ -7,6 +7,8 @@
     <th>admin?</th>
     <th>post articles?</th>
     <th>date user added</th>
+    <th>upgrade to admin?</th>
+    <th>upgrade to poster</th>
   </tr>
   <% @users.each do |user| %>
   <tr>
@@ -19,7 +21,13 @@
     <td class="text-center"><%= user.admin? %></td>
     <td class="text-center"><%= user.poster? %></td>
     <td class="text-center"><%= user.created_at.strftime("%Y-%m-%d") %></td>
-
+    <td class="text-center">
+      <%= form_with model: user do |form| %>
+        <%= form.check_box :admin %>
+        <%= form.submit %>
+      <% end %>
+    </td>
+    <td class="text-center"><%= check_box_tag(:poster) %></td>
   </tr>
   <% end %>
 
