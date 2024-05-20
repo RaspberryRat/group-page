@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_admin!, only: [:index, :show, :update, :edit]
+  before_action :authenticate_admin!, only: [:index, :show, :update, :edit, :destroy]
 
   def index
     @users = User.order(:id)
@@ -31,6 +31,20 @@ class UsersController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @user = User.find(params[:id])
+
+    if current_user == @user || !current_user.admin?
+      return redirect_to users_path, notice: 'You must be an admin to delete another user account'
+    end
+
+    @user.destroy
+    redirect_to users_path, status: :see_other
+    flash[:success] = "#{@user.email} was successfully deleted"
+
+  end
+
 
   private
   def user_params
