@@ -14,6 +14,7 @@
     <th>email</th>
     <th>admin?</th>
     <th>post articles?</th>
+    <th>event organizer?</th>
     <th>date user added</th>
     <th>       </th>
   </tr>
@@ -37,6 +38,14 @@
       <%= form_with model: user do |form| %>
         <%= form.check_box :poster,
           data: { action: 'click->auto-submit#click'} %>
+        <%= form.submit '', class: 'hidden',
+          data: { auto_submit_target: 'submit' } %>
+      <% end %>
+    </td>
+    <td class="text-center" data-controller="auto-submit">
+      <%= form_with model: user do |form| %>
+        <%= form.check_box :organizer,
+         data: { action: 'click->auto-submit#click'} %>
         <%= form.submit '', class: 'hidden',
           data: { auto_submit_target: 'submit' } %>
       <% end %>

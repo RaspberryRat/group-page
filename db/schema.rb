@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_18_161653) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_20_180607) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,6 +58,35 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_18_161653) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "richer_text_json_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_richer_texts_rich_json_uniqueness", unique: true
+    t.index ["record_type", "record_id"], name: "index_richer_text_json_texts_on_record"
+  end
+
+  create_table "richer_text_o_embeds", force: :cascade do |t|
+    t.jsonb "fields"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "richer_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_richer_texts_rich_texts_uniqueness", unique: true
+    t.index ["record_type", "record_id"], name: "index_richer_text_rich_texts_on_record"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -68,6 +97,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_18_161653) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
     t.boolean "poster", default: false
+    t.boolean "organizer", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

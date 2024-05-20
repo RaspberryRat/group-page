@@ -1,0 +1,18 @@
+<% flash.each do |type, msg| %>
+  <div class="mb-6 w-max
+    bg-blue-100 border border-blue-500 text-blue-700 px-4 py-3 rounded
+    relative" role="alert">
+    <%= msg %>
+  </div>
+<% end %>
+
+<div class="flex-col flex w-4/5"><h1 class="text-4xl font-bold">News</h1>
+  <% if user_signed_in? && current_user.organizer? %>
+    <div class="mb-12 p-2
+        text-white rounded-2xl border-2 border-black
+        bg-blue-500 hover:bg-blue-600 active:bg-blue-700
+        focus:outline-white focus:ring focus:ring-violet-300
+        w-max text-center justify-self-end self-end">
+      <%= link_to "New Event", new_event_path %>
+    </div>
+  <% end %>
