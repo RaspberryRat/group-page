@@ -1,12 +1,12 @@
 class EventsController < ApplicationController
-  before_action :authenticate_admin!, only: [:new, :create, :update, :edit, :destroy]
+  before_action :authenticate_admin!, only: [:new, :create]
 
   def new
     @event = Event.new
   end
 
   def create
-    @event = Event.new(post_params)
+    @event = Event.new(event_params)
 
     if @event.save
       redirect_to events_path, notice: 'Event successfully created'

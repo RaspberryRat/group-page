@@ -1,0 +1,32 @@
+<div class="pl-6 w-4/5">
+  <%= form_with model: event do |form| %>
+
+    <div class="flex flex-row gap-3 mb-6 items-center">
+      <%= form.label :title, "Event Title:", class: 'mr-10 font-bold' %>
+      <%= form.text_field :title, class: 'h-8' %>
+    </div>
+
+    <div class="field mb-6 flex flex-row gap-3 mb-6 items-center">
+      <%= form.label :date, "Event Date:", class: 'mr-10 font-bold' %>
+      <%= form.date_field :date, class: 'h-8'  %>
+    </div>
+
+    <div class="field mb-6 flex flex-row gap-3 mb-6 items-center">
+      <%= form.label :location, "Location:", class: 'mr-14 font-bold' %>
+      <%= form.text_field :location, class: 'h-8' %>
+    </div>
+
+    <div class="field mb-6">
+      <%= form.label :description, "Description:", class: 'font-bold' %>
+      <%= form.rich_text_area :description %>
+    </div>
+
+    <div class="field flex w-max
+      p-2 text-white rounded-2xl border-2 border-black
+      bg-blue-500 hover:bg-blue-600 active:bg-blue-700
+      focus:outline-white focus:ring focus:ring-violet-300">
+      <%= form.submit %>
+    </div>
+
+  <% end %>
+</div>
