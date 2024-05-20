@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_admin!, only: [:index, :show]
 
   def index
-    @users = User.all
+    @users = User.order(:id)
   end
 
   def show
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: 'User was successfully updated.'
+      redirect_to users_path, notice: 'User was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
