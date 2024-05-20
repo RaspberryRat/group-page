@@ -1,0 +1,11 @@
+<% event = @event %>
+<ul class="flex flex-col gap-4 text-lg">
+  <li class="font-bold text-xl"><%= event.title %></li>
+  <hr class="my-4 border-t border-gray-300 w-4/5 mx-auto">
+  <li><span class="font-bold">When:</span> <%= event.date.strftime("%A, %B %d, %Y") %></li>
+  <li><span class="font-bold">Where:</span> <%= event.location %></li>
+  <hr class="my-4 border-t border-gray-200 w-2/5 mx-auto">
+  <li class="p-6 mr-12"><%= event.description %></li>
+  <hr class="my-4 border-t border-gray-200 w-2/5 mx-auto">
+</ul>
+<hr class="my-4 border-t border-gray-300 w-4/5 mx-auto">
