@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_admin!, only: [:index, :show]
+  before_action :authenticate_admin!, only: [:index, :show, :update, :edit]
 
   def index
     @users = User.order(:id)
@@ -19,6 +19,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
+    if user_params.include?(:admin) && @user == current_user
+      redirect_to users_path, notice: 'Cannot change admin status of signed in user'
+      return
+    end
 
     if @user.update(user_params)
       redirect_to users_path, notice: 'User was successfully updated.'
