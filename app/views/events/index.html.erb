@@ -19,8 +19,12 @@
   <% end %>
 </div>
 
-<div><%= month_calendar do |date| %>
+<div><%= month_calendar(events: @meetings) do |date, meetings| %>
     <%= date.day %>
+
+
+
+
   <% end %></div>
 
 
@@ -31,7 +35,7 @@
 <% @events.each do |event| %>
 <ul class="flex flex-col gap-4 text-lg">
     <li class="font-bold text-xl text-blue-600 hover:text-blue-200 active:text-blue-900">
-      <%= link_to event.title, event %>
+      <%= link_to event.name, event %>
     </li>
   <li><span class="font-bold">When:</span> <%= event.date.strftime("%A, %B %d, %Y") %></li>
   <li><span class="font-bold">Where:</span> <%= event.location %></li>
