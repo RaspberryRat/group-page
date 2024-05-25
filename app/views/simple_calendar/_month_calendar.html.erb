@@ -26,10 +26,10 @@
       <tr>
         <% week.each do |day| %>
           <% events = calendar.sorted_events_for(day) %>
-          <% cell_classes = "relative p-4 bg-slate-200 border border-gray-700 #{calendar.td_classes_for(day)}" %>
-          <% cell_classes += " bg-slate-50" if day.month == start_date.month %>
-
-          <%= content_tag :td, class: cell_classes, style: "height: 120px; width: 120px; word-wrap: break-word;" do %>
+          <%= content_tag :td, class: "relative p-4 border border-gray-700 bg-slate-200 #{calendar.td_classes_for(day)}
+            #{'bg-slate-50' if day.month == start_date.month}
+            #{'bg-stone-200' if day.day.to_i % 2 == 0 && day.month == start_date.month}",
+            style: "height: 120px; width: 120px; word-wrap: break-word;" do %>
             <div class="absolute top-0 left-0 p-2 text-sm font-medium">
               <%= day.day %>
             </div>
