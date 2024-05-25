@@ -1,0 +1,13 @@
+<% member = @member %>
+<h1 class="mb-12 text-2xl font-bold"><%= member.full_name %>'s details</h1>
+
+<ul class="flex flex-col gap-4">
+  <li class="font-bold"><%= member.full_name %></li>
+  <li><span class="font-bold">Email:</span> <%= member.email %></li>
+  <li><span class="font-bold">Phone number:</span> <%= member.phone_number %></li>
+  <li><span class="font-bold">Region:</span> <%= member.region %></li>
+  <li><span class="font-bold">Department:</span> <%= member.department %></li>
+  <li><span class="font-bold">Classification:</span> <%= member.classification %></li>
+  <li><span class="font-bold">Subgroup:</span> <%= member.subgroup %></li>
+  <li><span class="font-bold">Steward:</span> <%= member.steward? %></li>
+</ul>

@@ -1,0 +1,61 @@
+<h1 class="font-bold text-2xl mb-12">Steward List</h1>
+
+<% flash.each do |type, msg| %>
+  <div class="mb-6 w-max
+    bg-red-100 border border-red-500 text-red-700 px-4 py-3 rounded
+    relative" role="alert">
+    <%= msg %>
+  </div>
+<% end %>
+
+<table class="w-4/5 border-separate border-spacing-2">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone Number</th>
+    <th>Region</th>
+    <th>Department</th>
+    <th>Classification</th>
+    <th>Subgroup</th>
+    <th>Role</th>
+    <th>       </th>
+  </tr>
+  <% @members.each do |member| %>
+    <tr>
+      <td class="text-center text-blue-700 hover:text-lg hover:scale-125">
+        <%= link_to member.full_name, member_path(member.id) %>
+      </td>
+      <td class="text-center text-blue-700 hover:text-lg hover:scale-125">
+        <%= link_to member.email, member_path(member.id)%>
+      </td>
+      <td class="text-center">
+        <%= member.phone_number %>
+      </td>
+      <td class="text-center">
+        <%= member.region %>
+      </td>
+      <td class="text-center">
+        <%= member.department %>
+      </td>
+      <td class="text-center">
+        <%= member.classification %>
+      </td>
+      <td>
+        <%= member.subgroup %>
+      </td>
+      <td class="text-center">
+        <% if member.steward? %>
+          Steward
+        <% end %>
+      </td>
+      <td class="text-center p-2
+      text-white rounded-2xl border-2 bg-red-400
+      hover:bg-blue-1000
+      w-32 text-center">
+        <%= button_to "Delete Member", member_path(member), method: :delete,
+                      data: { turbo_method: :delete,
+                              turbo_confirm: "Are you sure? This action cannot be undone" } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
