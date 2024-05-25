@@ -1,0 +1,59 @@
+<div class="pl-6 w-4/5">
+  <%= form_with model: member do |form| %>
+
+  <div>
+    <%= form.label :first_name, "First Name:" %>
+    <%= form.text_field :first_name %>
+  </div>
+
+    <div>
+      <%= form.label :last_name, "Last Name:" %>
+      <%= form.text_field :last_name %>
+    </div>
+
+    <div>
+      <%= form.label :email, "Email:" %>
+      <%= form.text_field :email %>
+    </div>
+
+    <div>
+      <%= form.label :phone_number, "Phone Number:" %>
+      <%= form.text_field :phone_number %>
+    </div>
+
+    <div>
+      <%= form.label :region, "Region:" %>
+      <%= form.text_field :region %>
+    </div>
+
+    <div>
+      <%= form.label :department, "Department:" %>
+      <%= form.text_field :department %>
+    </div>
+
+    <div>
+      <%= form.label :classification, "Classification:" %>
+      <%= form.text_field :classification %>
+    </div>
+
+    <div>
+      <%= form.label :subgroup, "Subgroup:" %>
+      <%= form.text_field :subgroup %>
+    </div>
+
+    <div>
+      <%= form.label :steward, "Steward?:" %>
+      <%= form.check_box :steward %>
+    </div>
+
+    <div class="field">
+      <%= form.label :position_id, 'Role' %>
+      <%= form.collection_select :position_id, Position.all, :id, :role, prompt: 'Select a role' %>
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
+
+  <% end %>
+</div>

@@ -8,6 +8,17 @@
   </div>
 <% end %>
 
+  <% if user_signed_in? && current_user.admin? %>
+    <div class="mb-12 p-2
+        text-white rounded-2xl border-2 border-black
+        bg-blue-500 hover:bg-blue-600 active:bg-blue-700
+        focus:outline-white focus:ring focus:ring-violet-300
+        w-max text-center self-start mt-6">
+      <%= link_to "New Member", new_member_path %>
+    </div>
+  <% end %>
+</div>
+
 <table class="w-4/5 border-separate border-spacing-2">
   <tr>
     <th>Name</th>
