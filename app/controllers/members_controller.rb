@@ -16,7 +16,11 @@ class MembersController < ApplicationController
   end
 
   def index
-    @members = Member.all
+    if params[:region_id].present?
+      @members = Member.where(region_id: params[:region_id])
+    else
+      @members = Member.order(:last_name, :first_name)
+    end
   end
 
   def show

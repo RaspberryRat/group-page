@@ -17,8 +17,19 @@
       <%= link_to "New Member", new_member_path %>
     </div>
   <% end %>
-</div>
 
+<div>
+  <%= form_with url: members_path, method: :get, local: true do |f| %>
+  <div>
+    <%= f.label :region_id, 'Region' %>
+    <%= f.collection_select :region_id, Region.all, :id, :region,
+      prompt: 'Select a region', selected: params[:region_id] %>
+  </div>
+    <div>
+      <%= f.submit 'Filter' %>
+    </div>
+  <% end %>
+</div>
 <table class="w-4/5 border-separate border-spacing-2">
   <tr>
     <th>Name</th>
