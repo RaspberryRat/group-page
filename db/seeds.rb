@@ -9,11 +9,11 @@
 #   end
 
 roles = [
-  { role: 'president' },
-  { role: 'vice-president' },
-  { role: 'treasurer' },
-  { role: 'secretary' },
-  { role: 'member at large' }
+  { role: 'President' },
+  { role: 'Vice-President' },
+  { role: 'Treasurer' },
+  { role: 'Secretary' },
+  { role: 'Member at Large' }
 ]
 
 # Create positions with predefined roles
@@ -60,4 +60,42 @@ classifications = [
 
 classifications.each do |classification_params|
   Classification.find_or_create_by(classification_params)
+end
+
+subgroups = [
+  { subgroup: "SP 123 Main Street, Winnipeg" },
+  { subgroup: "SP 401 Burrard Street" },
+  { subgroup: "SP 4900 Yonge St - Toronto" },
+  { subgroup: "SP 50 Victoria St, Place du Portage" },
+  { subgroup: "SP 501 University Crescent" },
+  { subgroup: "SP Confederation Heights Plus" },
+  { subgroup: "SP Downtown Edmonton" },
+  { subgroup: "SP ECC Toronto" },
+  { subgroup: "SP Edmonton" },
+  { subgroup: "SP Est Québec" },
+  { subgroup: "SP Fredericton" },
+  { subgroup: "SP Gander" },
+  { subgroup: "SP Hamilton-Burlington" },
+  { subgroup: "SP Mainland Nova Scotia" },
+  { subgroup: "SP Moncton" },
+  { subgroup: "SP Montréal" },
+  { subgroup: "SP NCR" },
+  { subgroup: "SP Nanaimo" },
+  { subgroup: "SP Quebec-City - NRCAN" },
+  { subgroup: "SP Scarborough" },
+  { subgroup: "SP South Saskatchewan" },
+  { subgroup: "SP St-Hyacinthe" },
+  { subgroup: "SP St. Andrews" },
+  { subgroup: "SP St. John's" },
+  { subgroup: "SP Tunney's Plus" },
+  { subgroup: "SP Vancouver" },
+  { subgroup: "SP Victoria" },
+  { subgroup: "SP Winnipeg Central" },
+  { subgroup: "SP Winnipeg" },
+  { subgroup: "SP Yellowknife" },
+  { subgroup: "SP Yukon" }
+]
+
+subgroups.each do |subgroup_params|
+  Subgroup.find_or_create_by(subgroup_params)
 end

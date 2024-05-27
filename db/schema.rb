@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_27_015642) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_27_022731) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,7 +77,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_015642) do
     t.string "last_name"
     t.string "email"
     t.string "phone_number"
-    t.string "subgroup"
     t.boolean "steward"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -85,10 +84,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_015642) do
     t.bigint "department_id"
     t.bigint "region_id"
     t.bigint "classification_id"
+    t.bigint "subgroup_id"
     t.index ["classification_id"], name: "index_members_on_classification_id"
     t.index ["department_id"], name: "index_members_on_department_id"
     t.index ["position_id"], name: "index_members_on_position_id"
     t.index ["region_id"], name: "index_members_on_region_id"
+    t.index ["subgroup_id"], name: "index_members_on_subgroup_id"
   end
 
   create_table "positions", force: :cascade do |t|
@@ -138,6 +139,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_015642) do
     t.index ["record_type", "record_id"], name: "index_richer_text_rich_texts_on_record"
   end
 
+  create_table "subgroups", force: :cascade do |t|
+    t.string "subgroup"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -159,4 +166,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_015642) do
   add_foreign_key "members", "departments"
   add_foreign_key "members", "positions"
   add_foreign_key "members", "regions"
+  add_foreign_key "members", "subgroups"
 end

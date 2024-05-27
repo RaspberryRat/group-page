@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_action :authenticate_admin!, only: [:new, :create, :destroy]
+  before_action :authenticate_admin!, only: [:new, :create, :destroy, :edit, :update]
 
   def new
     @member = Member.new
@@ -9,7 +9,7 @@ class MembersController < ApplicationController
     @member = Member.new(member_params)
 
     if @member.save
-      redirect_to members_path, notice: 'Memeber successfully created.'
+      redirect_to members_path, notice: "#{@member.full_name} was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,6 +21,20 @@ class MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+  end
+
+  def edit
+    @member = Member.find(params[:id])
+  end
+
+  def update
+    @member = Member.find(params[:id])
+
+    if @member.update(member_params)
+      redirect_to members_path, notice: "#{@member.full_name} was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -39,7 +53,7 @@ class MembersController < ApplicationController
 
   def member_params
     params.require(:member).permit(:first_name, :last_name, :email, :phone_number,
-      :subgroup, :steward, :position_id, :department_id, :classification_id, :region_id)
+      :subgroup_id, :steward, :position_id, :department_id, :classification_id, :region_id)
   end
 
 end

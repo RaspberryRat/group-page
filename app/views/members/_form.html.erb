@@ -38,8 +38,8 @@
     </div>
 
     <div>
-      <%= form.label :subgroup, "Subgroup:" %>
-      <%= form.text_field :subgroup %>
+      <%= form.label :subgroup_id, "Subgroup" %>
+      <%= form.collection_select :subgroup_id, Subgroup.all, :id, :subgroup %>
     </div>
 
     <div>
