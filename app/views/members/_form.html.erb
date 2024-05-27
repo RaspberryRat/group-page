@@ -21,19 +21,20 @@
       <%= form.text_field :phone_number %>
     </div>
 
-    <div>
-      <%= form.label :region, "Region:" %>
-      <%= form.text_field :region %>
+    <div class="field">
+      <%= form.label :region_id, 'Region' %>
+      <%= form.collection_select :region_id, Region.all, :id, :region, prompt: 'Select your region' %>
     </div>
 
     <div>
-      <%= form.label :department, "Department:" %>
-      <%= form.text_field :department %>
+      <%= form.label :department_id, "Department" %>
+      <%= form.collection_select :department_id, Department.all, :id, :department, prompt: 'Select your department' %>
     </div>
 
     <div>
-      <%= form.label :classification, "Classification:" %>
-      <%= form.text_field :classification %>
+      <%= form.label :classification_id, "Classification" %>
+      <%= form.collection_select :classification_id, Classification.all, :id, :classification,
+        prompt: 'Select your classification' %>
     </div>
 
     <div>
