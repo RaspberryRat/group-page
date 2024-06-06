@@ -1,5 +1,5 @@
 class Subgroup < ApplicationRecord
   has_many :members
 
-  validates :subgroup, presence: true
+  validates :name, presence: true
 end

@@ -1,6 +1,16 @@
 <div class="pl-6 w-4/5">
   <%= form_with model: member do |form| %>
 
+      <% if member.errors.any? %>
+        <div id="error_explanation mb-8">
+          <h2><%= pluralize(member.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul class="w-max bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+            <% member.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
   <div>
     <%= form.label :first_name, "First Name:" %>
     <%= form.text_field :first_name %>
@@ -23,24 +33,24 @@
 
     <div class="field">
       <%= form.label :region_id, 'Region' %>
-      <%= form.collection_select :region_id, Region.all, :id, :region, prompt: 'Select your region' %>
+      <%= form.collection_select :region_id, Region.all, :id, :name, prompt: 'Select your region' %>
     </div>
 
     <div>
       <%= form.label :department_id, "Department" %>
-      <%= form.collection_select :department_id, Department.all, :id, :department, prompt: 'Select your department' %>
-    </div>
+      <%= form.collection_select :department_id, Department.all, :id, :name, prompt: 'Select your department' %>
+      </div>
 
     <div>
       <%= form.label :classification_id, "Classification" %>
-      <%= form.collection_select :classification_id, Classification.all, :id, :classification,
+      <%= form.collection_select :classification_id, Classification.all, :id, :name,
         prompt: 'Select your classification' %>
-    </div>
+        </div>
 
     <div>
       <%= form.label :subgroup_id, "Subgroup" %>
-      <%= form.collection_select :subgroup_id, Subgroup.all, :id, :subgroup %>
-    </div>
+      <%= form.collection_select :subgroup_id, Subgroup.all, :id, :name, prompt: 'Select your Subgroup' %>
+        </div>
 
     <div>
       <%= form.label :steward, "Steward?:" %>

@@ -1,5 +1,5 @@
 class Classification < ApplicationRecord
   has_many :members
 
-  validates :classification, presence: true
+  validates :name, presence: true
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_27_022731) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_06_210925) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,15 +53,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_022731) do
   end
 
   create_table "classifications", force: :cascade do |t|
-    t.string "classification"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "departments", force: :cascade do |t|
-    t.string "department"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "events", force: :cascade do |t|
@@ -80,11 +80,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_022731) do
     t.boolean "steward"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "position_id"
-    t.bigint "department_id"
-    t.bigint "region_id"
-    t.bigint "classification_id"
     t.bigint "subgroup_id"
+    t.bigint "position_id"
+    t.bigint "region_id"
+    t.bigint "department_id"
+    t.bigint "classification_id"
     t.index ["classification_id"], name: "index_members_on_classification_id"
     t.index ["department_id"], name: "index_members_on_department_id"
     t.index ["position_id"], name: "index_members_on_position_id"
@@ -105,9 +105,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_022731) do
   end
 
   create_table "regions", force: :cascade do |t|
-    t.string "region"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "richer_text_json_texts", force: :cascade do |t|
@@ -140,9 +140,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_022731) do
   end
 
   create_table "subgroups", force: :cascade do |t|
-    t.string "subgroup"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|

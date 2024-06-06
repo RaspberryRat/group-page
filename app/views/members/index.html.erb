@@ -22,7 +22,7 @@
   <%= form_with url: members_path, method: :get, local: true do |f| %>
   <div>
     <%= f.label :region_id, 'Region' %>
-    <%= f.select :region_id, options_for_select([['All Regions', '']] + Region.pluck(:region, :id),
+    <%= f.select :region_id, options_for_select([['All Regions', '']] + Region.pluck(:name, :id),
       selected: params[:region_id]) %>
   </div>
     <div>
@@ -35,7 +35,7 @@
   <%= form_with url: members_path, method: :get, local: true do |f| %>
     <div>
       <%= f.label :department_id, 'Department' %>
-      <%= f.select :department_id, options_for_select([['All Departments', '']] + Department.pluck(:department, :id),
+      <%= f.select :department_id, options_for_select([['All Departments', '']] + Department.pluck(:name, :id),
         selected: params[:department_id]) %>
     </div>
     <div>
@@ -49,7 +49,7 @@
     <div>
       <%= f.label :classification_id, 'Classification' %>
       <%= f.select :classification_id,
-        options_for_select([['All Classifications', '']] + Classification.pluck(:classification, :id),
+        options_for_select([['All Classifications', '']] + Classification.pluck(:name, :id),
         selected: params[:classification_id]) %>
     </div>
     <div>
@@ -63,7 +63,7 @@
     <div>
       <%= f.label :subgroup_id, 'Subgroup' %>
       <%= f.select :subgroup_id,
-                   options_for_select([['All Subgroups', '']] + Subgroup.pluck(:subgroup, :id),
+                   options_for_select([['All Subgroups', '']] + Subgroup.pluck(:name, :id),
                                       selected: params[:subgroup_id]) %>
     </div>
     <div>
@@ -81,7 +81,10 @@
     <th>Department</th>
     <th>Classification</th>
     <th>Subgroup</th>
-    <th>Role</th>
+    <th>Subgroup Executive</th>
+    <% if current_user.admin? %>
+    <th>Steward?</th>
+    <% end %>
     <th>       </th>
     <th>        </th>
   </tr>
@@ -97,23 +100,31 @@
         <%= member.phone_number %>
       </td>
       <td class="text-center">
-        <%= member.region %>
+        <%= member.region.name %>
       </td>
       <td class="text-center">
-        <%= member.department %>
+        <%= member.department.name %>
       </td>
       <td class="text-center">
-        <%= member.classification %>
+        <%= member.classification.name %>
       </td>
       <td>
-        <%= member.subgroup %>
+        <%= member.subgroup.name %>
       </td>
+      <td class="text-center">
+        <% unless member.position.role == 'Not Applicable' %>
+          <%= member.position.role %>
+        <% end %>
+      </td>
+      <% if current_user.admin? %>
+
       <td class="text-center">
         <% if member.steward? %>
           Steward
+          <% else %>
+        Non-steward
         <% end %>
       </td>
-     <% if current_user.admin? %>
   <td class="text-center p-2
         text-white rounded-2xl border-2 bg-red-400
         hover:bg-red-300 active:bg-red-600

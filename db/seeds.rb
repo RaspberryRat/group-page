@@ -22,11 +22,11 @@ roles.each do |role_params|
 end
 
 departments = [
-  { department: 'Fisheries and Oceans Canada' },
-  { department: 'Natural Resources Canada' },
-  { department: 'Health Canada' },
-  { department: 'Environment and Climate Change Canada' },
-  { department: 'Indigenous Services Canada' }
+  { name: 'Fisheries and Oceans Canada' },
+  { name: 'Natural Resources Canada' },
+  { name: 'Health Canada' },
+  { name: 'Environment and Climate Change Canada' },
+  { name: 'Indigenous Services Canada' }
 ]
 
 departments.each do |department_params|
@@ -34,12 +34,12 @@ departments.each do |department_params|
 end
 
 regions = [
-  { region: 'Atlantic' },
-  { region: 'BC-Yukon' },
-  { region: 'National Capital Region' },
-  { region: 'Ontario' },
-  { region: 'Prairies/NWT' },
-  { region: 'Quebec' }
+  { name: 'Atlantic' },
+  { name: 'BC-Yukon' },
+  { name: 'National Capital Region' },
+  { name: 'Ontario' },
+  { name: 'Prairies/NWT' },
+  { name: 'Quebec' }
 ]
 
 regions.each do |region_params|
@@ -47,15 +47,15 @@ regions.each do |region_params|
 end
 
 classifications = [
-  { classification: 'AC' },
-  { classification: 'AG' },
-  { classification: 'BI' },
-  { classification: 'CH' },
-  { classification: 'FO' },
-  { classification: 'MT' },
-  { classification: 'PC' },
-  { classification: 'SG-SRE' },
-  { classification: 'SG-PAT' }
+  { name: 'AC' },
+  { name: 'AG' },
+  { name: 'BI' },
+  { name: 'CH' },
+  { name: 'FO' },
+  { name: 'MT' },
+  { name: 'PC' },
+  { name: 'SG-SRE' },
+  { name: 'SG-PAT' }
 ]
 
 classifications.each do |classification_params|
@@ -63,37 +63,37 @@ classifications.each do |classification_params|
 end
 
 subgroups = [
-  { subgroup: "SP 123 Main Street, Winnipeg" },
-  { subgroup: "SP 401 Burrard Street" },
-  { subgroup: "SP 4900 Yonge St - Toronto" },
-  { subgroup: "SP 50 Victoria St, Place du Portage" },
-  { subgroup: "SP 501 University Crescent" },
-  { subgroup: "SP Confederation Heights Plus" },
-  { subgroup: "SP Downtown Edmonton" },
-  { subgroup: "SP ECC Toronto" },
-  { subgroup: "SP Edmonton" },
-  { subgroup: "SP Est Québec" },
-  { subgroup: "SP Fredericton" },
-  { subgroup: "SP Gander" },
-  { subgroup: "SP Hamilton-Burlington" },
-  { subgroup: "SP Mainland Nova Scotia" },
-  { subgroup: "SP Moncton" },
-  { subgroup: "SP Montréal" },
-  { subgroup: "SP NCR" },
-  { subgroup: "SP Nanaimo" },
-  { subgroup: "SP Quebec-City - NRCAN" },
-  { subgroup: "SP Scarborough" },
-  { subgroup: "SP South Saskatchewan" },
-  { subgroup: "SP St-Hyacinthe" },
-  { subgroup: "SP St. Andrews" },
-  { subgroup: "SP St. John's" },
-  { subgroup: "SP Tunney's Plus" },
-  { subgroup: "SP Vancouver" },
-  { subgroup: "SP Victoria" },
-  { subgroup: "SP Winnipeg Central" },
-  { subgroup: "SP Winnipeg" },
-  { subgroup: "SP Yellowknife" },
-  { subgroup: "SP Yukon" }
+  { name: "SP 123 Main Street, Winnipeg" },
+  { name: "SP 401 Burrard Street" },
+  { name: "SP 4900 Yonge St - Toronto" },
+  { name: "SP 50 Victoria St, Place du Portage" },
+  { name: "SP 501 University Crescent" },
+  { name: "SP Confederation Heights Plus" },
+  { name: "SP Downtown Edmonton" },
+  { name: "SP ECC Toronto" },
+  { name: "SP Edmonton" },
+  { name: "SP Est Québec" },
+  { name: "SP Fredericton" },
+  { name: "SP Gander" },
+  { name: "SP Hamilton-Burlington" },
+  { name: "SP Mainland Nova Scotia" },
+  { name: "SP Moncton" },
+  { name: "SP Montréal" },
+  { name: "SP NCR" },
+  { name: "SP Nanaimo" },
+  { name: "SP Quebec-City - NRCAN" },
+  { name: "SP Scarborough" },
+  { name: "SP South Saskatchewan" },
+  { name: "SP St-Hyacinthe" },
+  { name: "SP St. Andrews" },
+  { name: "SP St. John's" },
+  { name: "SP Tunney's Plus" },
+  { name: "SP Vancouver" },
+  { name: "SP Victoria" },
+  { name: "SP Winnipeg Central" },
+  { name: "SP Winnipeg" },
+  { name: "SP Yellowknife" },
+  { name: "SP Yukon" }
 ]
 
 subgroups.each do |subgroup_params|

@@ -17,17 +17,17 @@ class MembersController < ApplicationController
 
   def index
 
-    if params[:region_id].present?
-      @members = Member.where(region_id: params[:region_id])
-    elsif params[:department_id].present?
-      @members = Member.where(department_id: params[:department_id])
-    elsif params[:classification_id].present?
-      @members = Member.where(classification_id: params[:classification_id])
-    elsif  params[:subgroup_id].present?
-      @members = Member.where(subgroup_id: params[:subgroup_id])
-    else
+    # if params[:region_id].present?
+    #   @members = Member.where(region_id: params[:region_id])
+    # elsif params[:department_id].present?
+    #   @members = Member.where(department_id: params[:department_id])
+    # elsif params[:classification_id].present?
+    #   @members = Member.where(classification_id: params[:classification_id])
+    # elsif  params[:subgroup_id].present?
+    #   @members = Member.where(subgroup_id: params[:subgroup_id])
+    # else
       @members = Member.order(:last_name, :first_name)
-    end
+    # end
   end
 
   def show
