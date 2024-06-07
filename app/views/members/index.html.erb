@@ -51,6 +51,29 @@
   <% end %>
 </div>
 
+<div class="Reset Filters">
+  <%= form_with url: members_path, method: :get, local: true do |f| %>
+    <div class="hidden">
+        <%= f.select :region_id, '' %>
+    </div>
+
+    <div class="hidden">
+       <%= f.select :department_id, '' %>
+    </div>
+
+    <div class="hidden">
+      <%= f.select :classification_id, '' %>
+    </div>
+
+    <div class="hidden">
+      <%= f.select :subgroup_id, '' %>
+    </div>
+    <div>
+      <%= f.submit 'Reset Filter' %>
+    </div>
+  <% end %>
+</div>
+
 <table class="w-4/5 border-separate border-spacing-2">
   <tr>
     <th>Name</th>
