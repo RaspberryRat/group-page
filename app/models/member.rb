@@ -11,6 +11,10 @@ class Member < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def self.filter_members(params)
+    params = remove_blank_params(params)
+    Member.where(params)
+  end
   # def position
   #   return if position_id.nil?
   #   Position.find(self.position_id).role
@@ -35,4 +39,8 @@ class Member < ApplicationRecord
   #   return if self.subgroup_id.nil?
   #   Subgroup.find(self.subgroup_id).subgroup
   # end
+  private
+  def self.remove_blank_params(params)
+    params.delete_if { |key, value| value.blank? }
+  end
 end

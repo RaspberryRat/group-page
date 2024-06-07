@@ -25,41 +25,20 @@
     <%= f.select :region_id, options_for_select([['All Regions', '']] + Region.pluck(:name, :id),
       selected: params[:region_id]) %>
   </div>
-    <div>
-      <%= f.submit 'Filter' %>
-    </div>
-  <% end %>
-</div>
 
-<div>
-  <%= form_with url: members_path, method: :get, local: true do |f| %>
-    <div>
-      <%= f.label :department_id, 'Department' %>
-      <%= f.select :department_id, options_for_select([['All Departments', '']] + Department.pluck(:name, :id),
-        selected: params[:department_id]) %>
-    </div>
-    <div>
-      <%= f.submit 'Filter' %>
-    </div>
-  <% end %>
-</div>
+  <div>
+    <%= f.label :department_id, 'Department' %>
+    <%= f.select :department_id, options_for_select([['All Departments', '']] + Department.pluck(:name, :id),
+      selected: params[:department_id]) %>
+  </div>
 
-<div>
-  <%= form_with url: members_path, method: :get, local: true do |f| %>
-    <div>
-      <%= f.label :classification_id, 'Classification' %>
-      <%= f.select :classification_id,
-        options_for_select([['All Classifications', '']] + Classification.pluck(:name, :id),
-        selected: params[:classification_id]) %>
-    </div>
-    <div>
-      <%= f.submit 'Filter' %>
-    </div>
-  <% end %>
-</div>
+  <div>
+    <%= f.label :classification_id, 'Classification' %>
+    <%= f.select :classification_id,
+      options_for_select([['All Classifications', '']] + Classification.pluck(:name, :id),
+      selected: params[:classification_id]) %>
+  </div>
 
-<div>
-  <%= form_with url: members_path, method: :get, local: true do |f| %>
     <div>
       <%= f.label :subgroup_id, 'Subgroup' %>
       <%= f.select :subgroup_id,
