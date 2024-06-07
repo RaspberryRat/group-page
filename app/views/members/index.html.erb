@@ -18,67 +18,75 @@
     </div>
   <% end %>
 
-<div class="flex">
-  <div>
-    <%= form_with url: members_path, method: :get, local: true do |f| %>
-      <div class="mb-4 flex justify-start gap-16 items-center">
-        <%= f.label :region_id, 'Region' %>
-        <%= f.select :region_id, options_for_select([['All Regions', '']] + Region.pluck(:name, :id),
-                                                    selected: params[:region_id]) %>
-      </div>
+<div data-controller="filter">
+  <button type="button" data-action="click->filter#show" data-filter-target="btn"
+  class="mb-12 p-2
+          text-white rounded-2xl border-2 border-black
+          bg-blue-500 hover:bg-blue-600 active:bg-blue-700
+          focus:outline-white focus:ring focus:ring-violet-300
+          w-max text-center self-start">Show Filters</button>
+  <div class="flex hidden" data-filter-target="form">
+    <div>
+      <%= form_with url: members_path, method: :get, local: true do |f| %>
+        <div class="mb-4 flex justify-start gap-16 items-center">
+          <%= f.label :region_id, 'Region' %>
+          <%= f.select :region_id, options_for_select([['All Regions', '']] + Region.pluck(:name, :id),
+                                                      selected: params[:region_id]) %>
+        </div>
 
-      <div class="mb-4 flex justify-start gap-6 items-center">
-        <%= f.label :department_id, 'Department' %>
-        <%= f.select :department_id, options_for_select([['All Departments', '']] + Department.pluck(:name, :id),
-                                                        selected: params[:department_id]) %>
-      </div>
+        <div class="mb-4 flex justify-start gap-6 items-center">
+          <%= f.label :department_id, 'Department' %>
+          <%= f.select :department_id, options_for_select([['All Departments', '']] + Department.pluck(:name, :id),
+                                                          selected: params[:department_id]) %>
+        </div>
 
-      <div class="mb-4 flex justify-start gap-3 items-center">
-        <%= f.label :classification_id, 'Classification' %>
-        <%= f.select :classification_id,
-                     options_for_select([['All Classifications', '']] + Classification.pluck(:name, :id),
-                                        selected: params[:classification_id]) %>
-      </div>
+        <div class="mb-4 flex justify-start gap-3 items-center">
+          <%= f.label :classification_id, 'Classification' %>
+          <%= f.select :classification_id,
+                       options_for_select([['All Classifications', '']] + Classification.pluck(:name, :id),
+                                          selected: params[:classification_id]) %>
+        </div>
 
-      <div class="mb-4 flex justify-start gap-10 items-center">
-        <%= f.label :subgroup_id, 'Subgroup' %>
-        <%= f.select :subgroup_id,
-                     options_for_select([['All Subgroups', '']] + Subgroup.pluck(:name, :id),
-                                        selected: params[:subgroup_id]) %>
-      </div>
-      <div class="text-center p-2
+        <div class="mb-4 flex justify-start gap-10 items-center">
+          <%= f.label :subgroup_id, 'Subgroup' %>
+          <%= f.select :subgroup_id,
+                       options_for_select([['All Subgroups', '']] + Subgroup.pluck(:name, :id),
+                                          selected: params[:subgroup_id]) %>
+        </div>
+        <div class="text-center p-2
         text-white rounded-2xl border-2 bg-blue-600
         hover:bg-blue-500 active:bg-blue-900
         w-32 text-center">
-        <%= f.submit 'Filter' %>
-      </div>
-    <% end %>
-  </div>
+          <%= f.submit 'Filter' %>
+        </div>
+      <% end %>
+    </div>
 
-  <div class="Reset Filters self-end">
-    <%= form_with url: members_path, method: :get, local: true do |f| %>
-      <div class="hidden">
-        <%= f.select :region_id, '' %>
-      </div>
+    <div class="Reset Filters self-end">
+      <%= form_with url: members_path, method: :get, local: true do |f| %>
+        <div class="hidden">
+          <%= f.select :region_id, '' %>
+        </div>
 
-      <div class="hidden">
-        <%= f.select :department_id, '' %>
-      </div>
+        <div class="hidden">
+          <%= f.select :department_id, '' %>
+        </div>
 
-      <div class="hidden">
-        <%= f.select :classification_id, '' %>
-      </div>
+        <div class="hidden">
+          <%= f.select :classification_id, '' %>
+        </div>
 
-      <div class="hidden">
-        <%= f.select :subgroup_id, '' %>
-      </div>
-      <div class="text-center p-2
+        <div class="hidden">
+          <%= f.select :subgroup_id, '' %>
+        </div>
+        <div class="text-center p-2
         text-white rounded-2xl border-2 bg-blue-600
         hover:bg-blue-500 active:bg-blue-900
         w-32 text-center">
-        <%= f.submit 'Reset Filter' %>
-      </div>
-    <% end %>
+          <%= f.submit 'Reset Filter' %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 <table class="w-4/5 border-separate border-spacing-2 mt-6">
