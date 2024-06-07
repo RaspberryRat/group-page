@@ -83,7 +83,6 @@
     <th>Department</th>
     <th>Classification</th>
     <th>Subgroup</th>
-    <th>Subgroup Executive</th>
     <% if current_user.admin? %>
     <th>Steward?</th>
     <% end %>
@@ -113,11 +112,7 @@
       <td>
         <%= member.subgroup.name %>
       </td>
-      <td class="text-center">
-        <% unless member.position.role == 'Not Applicable' %>
-          <%= member.position.role %>
-        <% end %>
-      </td>
+      
       <% if current_user.admin? %>
 
       <td class="text-center">
