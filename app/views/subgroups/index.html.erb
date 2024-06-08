@@ -1,9 +1,24 @@
-<h1>Subgroups</h1>
+<h1 class="font-bold text-2xl mb-12">Subgroups</h1>
 
-<ul>
+<div class="grid grid-cols-2 gap-2">
   <% @subgroups.each do |subgroup| %>
-  <li>
-    <%= link_to subgroup.name, subgroup_path(subgroup) %>
-  </li>
+
+  <ul class="flex flex-col mb-8 bg-gray-50 p-8 w-3/5 border border-gray-50 rounded-2xl">
+    <li class="font-bold mb-4 text-blue-600 hover:text-blue-400 active:text-blue-900">
+      <%= link_to subgroup.name, subgroup_path(subgroup) %>
+    </li>
+    <% if subgroup.members.blank? %>
+      <li class="pl-4">
+        No Active Members
+      </li>
+      <% else %>
+        <% subgroup.members.order(position_id: :asc).each do |member| %>
+        <li class="pl-4">
+          <%= link_to member.full_name, member_path(member) %>
+          <span class="italic"> - <%= link_to member.role, member_path(member) %></span>
+        </li>
+        <% end %>
+    <% end %>
+  </ul>
   <% end %>
-</ul>
+</div>
