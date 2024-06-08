@@ -5,9 +5,16 @@
   <li class="font-bold"><%= member.full_name %></li>
   <li><span class="font-bold">Email:</span> <%= member.email %></li>
   <li><span class="font-bold">Phone number:</span> <%= member.phone_number %></li>
-  <li><span class="font-bold">Region:</span> <%= member.region %></li>
-  <li><span class="font-bold">Department:</span> <%= member.department %></li>
-  <li><span class="font-bold">Classification:</span> <%= member.classification %></li>
-  <li><span class="font-bold">Subgroup:</span> <%= member.subgroup %></li>
-  <li><span class="font-bold">Steward:</span> <%= member.steward? %></li>
+  <li><span class="font-bold">Region:</span> <%= member.region.name %></li>
+  <li><span class="font-bold">Department:</span> <%= member.department.name %></li>
+  <li><span class="font-bold">Classification:</span> <%= member.classification.name %></li>
+  <li><span class="font-bold">Subgroup:</span> <%= member.subgroup.name %></li>
+  <li><span class="font-bold">
+    Steward:</span>
+    <% if member.steward? %>
+      Yes
+    <% else %>
+      No
+    <% end %>
+  </li>
 </ul>

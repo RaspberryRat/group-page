@@ -1,0 +1,24 @@
+<% subgroup = @subgroup %>
+<h1 class="font-bold text-2xl mb-12"><%= subgroup.name %></h1>
+
+<div class="grid grid-cols-2 gap-4">
+  <% subgroup.members.order(position_id: :asc).each do |member| %>
+    <ul class="flex flex-col bg-gray-50 p-8 w-3/5 border border-gray-50 rounded-2xl">
+      <li class="font-bold text-blue-600 hover:text-blue-400 active:text-blue-900">
+        <%= link_to member.full_name, member_path(member) %>
+      </li>
+      <li>
+        <span class="italic text-gray-600">Subgroup Role:</span>
+        <%= member.role %>
+      </li>
+      <li>
+        <span class="italic text-gray-600">Email:</span>
+        <%= member.email %>
+      </li>
+      <li>
+        <span class="italic  text-gray-600">Phone Number:</span>
+        <%= member.phone_number %>
+      </li>
+    </ul>
+  <% end %>
+</div>

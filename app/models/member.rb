@@ -25,6 +25,10 @@ class Member < ApplicationRecord
     params[:position_id] = '' if params[:position_id] == 'Not Applicable'
   end
 
+  def role
+    self.position.role
+  end
+
   private
   def self.remove_blank_params(params)
     params.delete_if { |key, value| value.blank? }
