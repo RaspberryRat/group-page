@@ -18,14 +18,14 @@
     </div>
   <% end %>
 
-<div data-controller="filter">
-  <button type="button" data-action="click->filter#show" data-filter-target="btn"
+<div data-controller="hide">
+  <button type="button" data-action="click->hide#show" data-hide-target="btn"
   class="mb-12 p-2
           text-white rounded-2xl border-2 border-black
           bg-blue-500 hover:bg-blue-600 active:bg-blue-700
           focus:outline-white focus:ring focus:ring-violet-300
           w-max text-center self-start">Show Filters</button>
-  <div class="flex hidden" data-filter-target="form">
+  <div class="flex hidden" data-hide-target="element">
     <div>
       <%= form_with url: members_path, method: :get, local: true do |f| %>
         <div class="mb-4 flex justify-start gap-16 items-center">
