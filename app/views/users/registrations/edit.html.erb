@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2 class="font-bold text-2xl mb-12">Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
@@ -31,13 +31,21 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+  <div class="flex mt-6 gap-6">
+    <div class="actions mb-12 p-2
+       text-white rounded-2xl border-2 border-black
+       bg-blue-500 hover:bg-blue-600 active:bg-blue-700
+       focus:outline-white focus:ring focus:ring-violet-300
+       w-max text-center self-start">
+      <%= f.submit "Update" %>
+    </div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+<div class="mb-12 p-2
+     text-white rounded-2xl border-2 border-black
+     bg-blue-500 hover:bg-blue-600 active:bg-blue-700
+     focus:outline-white focus:ring focus:ring-violet-300
+     w-max text-center self-start"><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
 
-<%= link_to "Back", :back %>
+</div>
