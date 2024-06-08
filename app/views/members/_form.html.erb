@@ -11,58 +11,74 @@
           </ul>
         </div>
       <% end %>
-  <div>
-    <%= form.label :first_name, "First Name:" %>
-    <%= form.text_field :first_name %>
-  </div>
-
-    <div>
-      <%= form.label :last_name, "Last Name:" %>
-      <%= form.text_field :last_name %>
-    </div>
-
-    <div>
-      <%= form.label :email, "Email:" %>
-      <%= form.text_field :email %>
-    </div>
-
-    <div>
-      <%= form.label :phone_number, "Phone Number:" %>
-      <%= form.text_field :phone_number %>
-    </div>
-
-    <div class="field">
-      <%= form.label :region_id, 'Region' %>
-      <%= form.collection_select :region_id, Region.all, :id, :name, prompt: 'Select your region' %>
-    </div>
-
-    <div>
-      <%= form.label :department_id, "Department" %>
-      <%= form.collection_select :department_id, Department.all, :id, :name, prompt: 'Select your department' %>
+    <div class="flex gap-6 mb-6">
+      <div>
+        <%= form.label :first_name, "First Name:", class: "mr-6" %>
+        <%= form.text_field :first_name %>
       </div>
 
-    <div>
-      <%= form.label :classification_id, "Classification" %>
-      <%= form.collection_select :classification_id, Classification.all, :id, :name,
-        prompt: 'Select your classification' %>
-        </div>
-
-    <div>
-      <%= form.label :subgroup_id, "Subgroup" %>
-      <%= form.collection_select :subgroup_id, Subgroup.all, :id, :name, prompt: 'Select your Subgroup' %>
-        </div>
-
-    <div>
-      <%= form.label :steward, "Steward?:" %>
-      <%= form.check_box :steward %>
+      <div>
+        <%= form.label :last_name, "Last Name:", class: 'mr-14' %>
+        <%= form.text_field :last_name %>
+      </div>
     </div>
 
-    <div class="field">
-      <%= form.label :position_id, 'Role' %>
-      <%= form.collection_select :position_id, Position.all, :id, :role, prompt: 'Select a role' %>
+    <div class="flex gap-6 mb-6">
+      <div>
+        <%= form.label :email, "Email:", class: "mr-16" %>
+        <%= form.text_field :email %>
+      </div>
+
+      <div>
+        <%= form.label :phone_number, "Phone Number:", class: 'mr-6' %>
+        <%= form.text_field :phone_number %>
+      </div>
     </div>
 
-    <div>
+    <div class="flex gap-6 mb-6">
+      <div>
+        <%= form.label :region_id, 'Region:', class: "mr-14" %>
+        <%= form.collection_select :region_id, Region.all, :id, :name, prompt: 'Select your region' %>
+      </div>
+
+      <div>
+        <%= form.label :department_id, "Department:", class: 'ml-11 mr-12' %>
+        <%= form.collection_select :department_id, Department.all, :id, :name, prompt: 'Select your department' %>
+      </div>
+    </div>
+
+    <div class="flex gap-6 mb-6">
+      <div>
+        <%= form.label :classification_id, "Classification:", class: "mr-2" %>
+        <%= form.collection_select :classification_id, Classification.all, :id, :name,
+                                   prompt: 'Select your classification' %>
+      </div>
+
+      <div>
+        <%= form.label :subgroup_id, "Subgroup:", class: 'ml-8 mr-24' %>
+        <%= form.collection_select :subgroup_id, Subgroup.all, :id, :name, prompt: 'Select your Subgroup' %>
+      </div>
+    </div>
+
+    <div class="flex gap-6 mb-6">
+      <div class="field">
+        <%= form.label :position_id, 'Subgroup Role:' %>
+        <%= form.collection_select :position_id, Position.all, :id, :role, prompt: 'Select a role' %>
+      </div>
+
+      <div class="self-end">
+        <%= form.label :steward, "Steward?:", class: 'ml-24 mr-6' %>
+        <%= form.check_box :steward, class: 'h-6 w-6' %>
+      </div>
+    </div>
+
+
+
+    <div class="mb-12 p-2
+        text-white rounded-2xl border-2 border-black
+        bg-blue-500 hover:bg-blue-600 active:bg-blue-700
+        focus:outline-white focus:ring focus:ring-violet-300
+        w-max text-center self-start mt-6">
       <%= form.submit %>
     </div>
 
