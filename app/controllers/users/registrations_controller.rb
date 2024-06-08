@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-class Sessions::RegistrationsController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  after_action :sign_up_message
 
   # GET /resource/sign_up
   # def new
@@ -59,4 +60,11 @@ class Sessions::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  private
+
+  def sign_up_message
+    if resource.persisted?
+      flash[:notice] = 'Your registration is on hold, it must be approved by an admin'
+    end
+  end
 end

@@ -50,9 +50,11 @@
               <%= link_to "Log In", new_user_session_path %>
             </li>
           <% end %>
+        <% unless user_signed_in? %>
           <li class="hover:scale-125 text-inherit">
-            <%= link_to "Sign Up", new_user_registration_path %>
+              <%= link_to "Sign Up", new_user_registration_path %>
           </li>
+        <% end %>
         </ul>
       </nav>
 
