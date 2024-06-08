@@ -6,9 +6,8 @@ class MembersController < ApplicationController
   end
 
   def create
-    debugger
     @member = Member.new(member_params)
-    debugger
+
     if @member.save
       redirect_to members_path, notice: "#{@member.full_name} was successfully created."
     else
@@ -57,12 +56,16 @@ class MembersController < ApplicationController
   private
 
   def member_params
-    debugger
-    params[:position_id] = '' if params[:position_id] == 'Not Applicable'
+    remove_not_applicable_position
     params.require(:member).permit(:first_name, :last_name, :email, :phone_number,
       :subgroup_id, :steward, :position_id, :department_id, :classification_id, :region_id)
   end
 
+  def remove_not_applicable_position
+    return if params[:member][:position_id].blank?
+
+    params[:member][:position_id] = '' if Position.find_by(id: params[:member][:position_id]).role == 'Not Applicable'
+  end
   def filter_params
     params.except(:commit).permit(:subgroup_id, :department_id, :classification_id, :region_id)
   end

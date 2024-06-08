@@ -7,6 +7,8 @@ class Member < ApplicationRecord
 
   validates :first_name, :last_name, :email, :phone_number, presence: true
   validates :department_id, :classification_id, :region_id, presence: true
+  validate :subgroup_requires_position
+  validate :position_requires_subgroup
 
   def full_name
     "#{first_name} #{last_name}"
@@ -23,17 +25,20 @@ class Member < ApplicationRecord
     params[:position_id] = '' if params[:position_id] == 'Not Applicable'
   end
 
-  def subgroup_validation(params)
-    debugger
-    return if params.nil? || params.empty?
-
-    return true if params[:subgroup_id].empty? || params[:position_id].present?
-
-    false if params[:position_id].blank? && params[:subgroup_id].present?
-  end
-
   private
   def self.remove_blank_params(params)
     params.delete_if { |key, value| value.blank? }
+  end
+
+  def subgroup_requires_position
+    if subgroup_id.present? && position_id.blank?
+      errors.add(:position_id, "must be chosen if subgroup is chosen.")
+    end
+  end
+
+  def position_requires_subgroup
+    if position_id.present? && subgroup_id.blank?
+      errors.add(:subgroup_id, "must be chosen if a position is chosen.")
+    end
   end
 end
