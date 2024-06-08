@@ -89,48 +89,52 @@
     </div>
   </div>
 </div>
-<table class="w-4/5 border-separate border-spacing-2 mt-6">
+<table class="w-4/5 border-separate border-spacing-2 mt-6 divide-y divide-gray-200">
+  <thead class="bg-gray-50">
   <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Phone Number</th>
-    <th>Region</th>
-    <th>Department</th>
-    <th>Classification</th>
-    <th>Subgroup</th>
+    <th class="text-gray-500 tracking-wider border border-gray-200">Name</th>
+    <th class="text-gray-500 tracking-wider border border-gray-200">Email</th>
+    <th class="text-gray-500 tracking-wider border border-gray-200">Phone Number</th>
+    <th class="text-gray-500 tracking-wider border border-gray-200">Region</th>
+    <th class="text-gray-500 tracking-wider border border-gray-200">Department</th>
+    <th class="text-gray-500 tracking-wider border border-gray-200">Classification</th>
+    <th class="text-gray-500 tracking-wider border border-gray-200">Subgroup</th>
     <% if current_user.admin? %>
-    <th>Steward?</th>
+      <th class="text-gray-500 tracking-wider border border-gray-200">Steward?</th>
     <% end %>
-    <th>       </th>
-    <th>        </th>
+    <th></th>
+    <th></th>
   </tr>
+  </thead>
   <% @members.each do |member| %>
     <tr>
-      <td class="text-center text-blue-700 hover:text-lg hover:scale-125">
+      <td class="text-center text-blue-700 hover:text-lg hover:scale-125 border border-gray-200">
         <%= link_to member.full_name, member_path(member) %>
       </td>
-      <td class="text-center text-blue-700 hover:text-lg hover:scale-125">
+      <td class="text-center text-blue-700 hover:text-lg hover:scale-125 border border-gray-200">
         <%= link_to member.email, member_path(member)%>
       </td>
-      <td class="text-center">
+      <td class="text-center border border-gray-200">
         <%= member.phone_number %>
       </td>
-      <td class="text-center">
+      <td class="text-center border border-gray-200">
         <%= member.region.name %>
       </td>
-      <td class="text-center">
+      <td class="text-center border border-gray-200">
         <%= member.department.name %>
       </td>
-      <td class="text-center">
+      <td class="text-center border border-gray-200">
         <%= member.classification.name %>
       </td>
-      <td>
-        <%= member.subgroup.name %>
+      <td class="text-center border border-gray-200">
+        <% unless member.subgroup.nil? %>
+          <%= member.subgroup.name %>
+        <% end %>
       </td>
 
       <% if current_user.admin? %>
 
-      <td class="text-center">
+      <td class="text-center border border-gray-200">
         <% if member.steward? %>
           Steward
           <% else %>
