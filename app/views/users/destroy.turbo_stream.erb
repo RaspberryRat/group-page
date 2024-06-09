@@ -1,0 +1,4 @@
+<%= turbo_stream.replace 'pending-users-count',
+                         partial: 'users/pending_users_count', locals: { count: User.pending.count } %>
+
+<%= turbo_stream.remove "user_#{@user.id}" %>

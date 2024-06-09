@@ -19,8 +19,9 @@
 <% unless @users.pending?.empty? %>
  <div data-controller="hide">
     <div class="flex flex-col justify-start">
-    <span class="italic bg-red-100 border border-red-500 text-red-700 px-3 py-3 rounded w-max">
-      You have <%= @users.pending?.count %> user accounts waiting for approval
+    <span id="pending-users-count"
+      class="italic bg-red-100 border border-red-500 text-red-700 px-3 py-3 rounded w-max">
+      <%= render partial: 'users/pending_users_count', locals: { users: @users.pending? } %>
     </span>
     <button type="button" data-action="click->hide#show" data-hide-target="btn"
         class="mb-12 p-2
@@ -66,10 +67,7 @@
     <th></th>
   </tr>
   </thead>
-
-
   <tbody id='approved_users'>
     <%= render partial: 'users/approved_user', collection: @users.approved?, as: :user %>
   </tbody>
-
 </table>

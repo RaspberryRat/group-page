@@ -32,7 +32,9 @@ class UsersController < ApplicationController
             render turbo_stream: [
               turbo_stream.append('approved_users',
                                   partial: 'users/approved_user', locals: { user: @user }),
-              turbo_stream.remove("user_#{@user.id}")
+              turbo_stream.remove("user_#{@user.id}"),
+              turbo_stream.update('pending-users-count', partial: 'users/pending_users_count',
+                                 locals: { users: User.pending? })
             ]
           end
           format.html { redirect_to users_path, notice: 'User was successfully updated.' }
@@ -56,8 +58,12 @@ class UsersController < ApplicationController
     respond_to do |format|
       @user.destroy
       format.turbo_stream do
-        render turbo_stream: turbo_stream.remove("user_#{@user.id}")
-      end
+        render turbo_stream: [
+          turbo_stream.remove("user_#{@user.id}"),
+          turbo_stream.update('pending-users-count', partial: 'users/pending_users_count',
+                             locals: { users: User.pending? })
+          ]
+        end
       format.html { redirect_to users_path, status: :see_other }
     end
       flash[:success] = "#{@user.email} was successfully deleted"

@@ -1,4 +1,5 @@
 <%= if @user.approve_changed? %>
   <%= turbo_stream.append 'approved_users', partial: 'users/approve_user', locals: { user: @user } %>
   <%= turbo_stream.remove "user_#{@user.id}" %>
+
 <% end %>
