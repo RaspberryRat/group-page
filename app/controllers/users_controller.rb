@@ -53,9 +53,14 @@ class UsersController < ApplicationController
       return redirect_to users_path, notice: 'You must be an admin to delete another user account'
     end
 
-    @user.destroy
-    redirect_to users_path, status: :see_other
-    flash[:success] = "#{@user.email} was successfully deleted"
+    respond_to do |format|
+      @user.destroy
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.remove("user_#{@user.id}")
+      end
+      format.html { redirect_to users_path, status: :see_other }
+    end
+      flash[:success] = "#{@user.email} was successfully deleted"
 
   end
 
