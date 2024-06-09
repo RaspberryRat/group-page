@@ -4,6 +4,7 @@ class Member < ApplicationRecord
   belongs_to :department
   belongs_to :classification
   belongs_to :subgroup, optional: true
+  belongs_to :executive, optional: true
 
   validates :first_name, :last_name, :email, :phone_number, presence: true
   validates :department_id, :classification_id, :region_id, presence: true

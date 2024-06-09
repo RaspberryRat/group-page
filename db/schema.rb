@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_08_230522) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_09_224922) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +72,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_08_230522) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "executives", force: :cascade do |t|
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "members", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -85,8 +91,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_08_230522) do
     t.bigint "region_id"
     t.bigint "department_id"
     t.bigint "classification_id"
+    t.boolean "bargaining", default: false, null: false
+    t.bigint "executive_id"
     t.index ["classification_id"], name: "index_members_on_classification_id"
     t.index ["department_id"], name: "index_members_on_department_id"
+    t.index ["executive_id"], name: "index_members_on_executive_id"
     t.index ["position_id"], name: "index_members_on_position_id"
     t.index ["region_id"], name: "index_members_on_region_id"
     t.index ["subgroup_id"], name: "index_members_on_subgroup_id"
@@ -165,6 +174,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_08_230522) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "members", "classifications"
   add_foreign_key "members", "departments"
+  add_foreign_key "members", "executives"
   add_foreign_key "members", "positions"
   add_foreign_key "members", "regions"
   add_foreign_key "members", "subgroups"

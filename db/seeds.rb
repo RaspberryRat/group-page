@@ -99,3 +99,24 @@ subgroups = [
 subgroups.each do |subgroup_params|
   Subgroup.find_or_create_by(subgroup_params)
 end
+
+
+roles = [
+  { role: 'President' },
+  { role: 'Vice-President' },
+  { role: 'Treasurer' },
+  { role: 'Secretary' },
+  { role: 'Chief Steward'  },
+  { role: 'Communications Coordinator' },
+  { role: 'Delegate Coordinator'  },
+  { role: ' Membership Coordinator' },
+  { role: 'Bargaining Team Coordinator' },
+  { role: 'Mobilization Coordinator' },
+  { role: 'Recognition Coordinator' },
+  { role: 'Parliamentarian' }
+
+]
+
+roles.each do |role_params|
+  Executive.find_or_create_by(role_params)
+end

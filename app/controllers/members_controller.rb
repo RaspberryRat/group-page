@@ -50,7 +50,7 @@ class MembersController < ApplicationController
 
     @member.destroy
     redirect_to members_path, status: :see_other
-    flash[:success] = "#{@member.full_name} was successfully deleted."
+    flash[:alert] = "#{@member.full_name} was successfully deleted."
   end
 
   private
@@ -58,7 +58,7 @@ class MembersController < ApplicationController
   def member_params
     remove_not_applicable_position
     params.require(:member).permit(:first_name, :last_name, :email, :phone_number,
-      :subgroup_id, :steward, :position_id, :department_id, :classification_id, :region_id)
+      :subgroup_id, :steward, :position_id, :department_id, :classification_id, :region_id, :bargaining)
   end
 
   def remove_not_applicable_position
