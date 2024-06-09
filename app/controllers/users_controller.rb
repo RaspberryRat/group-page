@@ -27,16 +27,21 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update(user_params)
-        format.turbo_stream do
-          render turbo_stream: [
-            turbo_stream.append('approved_users',
-                                partial: 'users/approved_user', locals: { user: @user }),
-            turbo_stream.remove("user_#{@user.id}")
-          ]
+        if user_params.include?(:approve)
+          format.turbo_stream do
+            render turbo_stream: [
+              turbo_stream.append('approved_users',
+                                  partial: 'users/approved_user', locals: { user: @user }),
+              turbo_stream.remove("user_#{@user.id}")
+            ]
+          end
+          format.html { redirect_to users_path, notice: 'User was successfully updated.' }
+        elsif !user_params.include?(:approve)
+          format.html { redirect_to users_path, notice: 'User was successfully updated.' }
+
+        else
+          format.html { render :edit, status: :unprocessable_entity }
         end
-        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end
