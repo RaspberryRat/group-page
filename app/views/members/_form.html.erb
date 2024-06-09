@@ -61,7 +61,7 @@
       </div>
 
       <div>
-        <%= form.label :subgroup_id, "Subgroup:", class: 'ml-40 mr-16' %>
+        <%= form.label :subgroup_id, "Subgroup:", class: 'ml-8 mr-16' %>
         <%= form.collection_select :subgroup_id, Subgroup.all, :id, :name, prompt: 'Select your Subgroup' %>
       </div>
     </div>
@@ -82,11 +82,11 @@
 
       <div class="checkboxes flex">
         <div class="">
-          <%= form.label :steward, "Steward?:", class: %>
+          <%= form.label :steward, "Steward?:", class:'mr-6' %>
           <%= form.check_box :steward, class: 'h-6 w-6' %>
         </div>
         <div class="ml-52">
-          <%= form.label :bargaining, "Bargaining Team Member?:", class: 'ml-24 mr-6' %>
+          <%= form.label :bargaining, "Bargaining Team Member?:", class: 'ml-20 mr-6' %>
           <%= form.check_box :bargaining, class: 'h-6 w-6' %>
         </div>
       </div>

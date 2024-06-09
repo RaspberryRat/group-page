@@ -61,6 +61,8 @@
                        options_for_select([['All Subgroups', '']] + Subgroup.pluck(:name, :id),
                                           selected: params[:subgroup_id]) %>
         </div>
+
+       
         <div class="text-center p-2
         text-white rounded-2xl border-2 bg-blue-600
         hover:bg-blue-500 active:bg-blue-900
@@ -107,6 +109,8 @@
     <th class="text-gray-500 tracking-wider border border-gray-200">Department</th>
     <th class="text-gray-500 tracking-wider border border-gray-200">Classification</th>
     <th class="text-gray-500 tracking-wider border border-gray-200">Subgroup</th>
+    <th class="text-gray-500 tracking-wider border border-gray-200">Executive Position?</th>
+    <th class="text-gray-500 tracking-wider border border-gray-200">Bargaining Team?</th>
     <% if current_user.admin? %>
       <th class="text-gray-500 tracking-wider border border-gray-200">Steward?</th>
     <% end %>
@@ -139,7 +143,16 @@
           <%= member.subgroup.name %>
         <% end %>
       </td>
-
+      <td class="text-center border border-gray-200">
+        <% if member.executive_id? %>
+          <%= member.executive.role %>
+        <% end %>
+      </td>
+      <td class="text-center border border-gray-200">
+        <% if member.bargaining? %>
+          Yes
+        <% end %>
+      </td>
       <% if current_user.admin? %>
 
       <td class="text-center border border-gray-200">
