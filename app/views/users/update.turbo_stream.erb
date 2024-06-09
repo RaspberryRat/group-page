@@ -1,0 +1,5 @@
+<%= turbo_stream.append 'approved_users' do  %>
+  <%= render partial: 'users/approved_user', locals: { user: @user } %>
+<% end %>
+
+<%= turbo_stream.remove "user_#{@user.id}" %>

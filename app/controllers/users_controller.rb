@@ -25,10 +25,19 @@ class UsersController < ApplicationController
       return
     end
 
-    if @user.update(user_params)
-      redirect_to users_path, notice: 'User was successfully updated.'
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @user.update(user_params)
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.append('approved_users',
+                                partial: 'users/approved_user', locals: { user: @user }),
+            turbo_stream.remove("user_#{@user.id}")
+          ]
+        end
+        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
     end
   end
 

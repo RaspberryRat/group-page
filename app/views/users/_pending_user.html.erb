@@ -1,0 +1,55 @@
+<tr id="user_<%= user.id %>">
+  <td class="text-center text-blue-700 hover:text-lg hover:scale-125">
+    <%= link_to user.id, user_path(user.id) %>
+  </td>
+  <td class="text-center text-blue-700 hover:text-lg hover:scale-125">
+    <%= link_to user.email, user_path(user.id) %>
+  </td>
+  <td class="text-center" data-controller="auto-submit">
+    <%= form_with model: user do |form| %>
+      <%= form.check_box :admin,
+                         data: { action: 'click->auto-submit#click'}%>
+      <%= form.submit '', class: 'hidden',
+                      data: { auto_submit_target: 'submit' }%>
+    <% end %>
+  </td>
+  <td class="text-center" data-controller="auto-submit">
+    <%= form_with model: user do |form| %>
+      <%= form.check_box :poster,
+                         data: { action: 'click->auto-submit#click'} %>
+      <%= form.submit '', class: 'hidden',
+                      data: { auto_submit_target: 'submit' } %>
+    <% end %>
+  </td>
+  <td class="text-center" data-controller="auto-submit">
+    <%= form_with model: user do |form| %>
+      <%= form.check_box :organizer,
+                         data: { action: 'click->auto-submit#click'} %>
+      <%= form.submit '', class: 'hidden',
+                      data: { auto_submit_target: 'submit' } %>
+    <% end %>
+  </td>
+  <td class="text-center">
+    <%= user.created_at.strftime("%Y-%m-%d") %>
+  </td>
+  <td class="text-center p-2
+        text-white rounded-2xl border-2 bg-red-400
+        hover:bg-blue-1000
+        w-32 text-center">
+    <%= button_to "Reject User", user_path(user), method: :delete,
+                  data: { turbo_method: :delete,
+                          turbo_confirm: "Are you sure? This action cannot be undone" } %>
+  </td>
+  <td class="text-center p-2
+        text-white rounded-2xl border-2 bg-blue-600
+        hover:bg-blue-500 active:bg-blue-900
+        w-32 text-center">
+    <%= form_with model: user do |form| %>
+      <%= form.hidden_field :approve, value: true %>
+      <%= form.button type: :submit, data: { confirm: 'Are you sure you want to approve this user?' } do %>
+        Approve User
+      <% end %>
+    <% end %>
+
+  </td>
+</tr>
