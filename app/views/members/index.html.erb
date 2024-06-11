@@ -109,7 +109,7 @@
     <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Department</th>
     <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Classification</th>
     <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Subgroup</th>
-    <% if current_user.admin? %>
+    <% if user_signed_in? && current_user.admin? %>
       <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Executive Position?</th>
       <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Bargaining Team?</th>
       <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Steward?</th>
@@ -143,7 +143,7 @@
           <%= member.subgroup.name %>
         <% end %>
       </td>
-      <% if current_user.admin? %>
+      <% if user_signed_in? && current_user.admin? %>
       <td class="text-center border border-gray-200">
           <% if member.executive_id? %>
             <%= member.executive.role %>

@@ -71,3 +71,6 @@ gem "tailwindcss-rails", "~> 2.6"
 gem "devise", "~> 4.9"
 
 gem 'simple_calendar'
+gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "aws-sdk-s3", "~> 1.152", :require => false
