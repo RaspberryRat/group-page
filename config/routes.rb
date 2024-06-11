@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
 
+  get 'members/bargaining_team', to: 'members#bargaining_team', as: 'bargaining_team'
+
   resources :posts
 
   resources :users, except: [:new, :create]
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
   resources :members
 
   resources :subgroups, only: [:index, :show]
+
+
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -53,6 +53,10 @@ class MembersController < ApplicationController
     flash[:alert] = "#{@member.full_name} was successfully deleted."
   end
 
+  def bargaining_team
+    @bargaining_team = Member.where(bargaining: true)
+  end
+
   private
 
   def member_params
