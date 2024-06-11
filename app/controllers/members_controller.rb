@@ -17,9 +17,17 @@ class MembersController < ApplicationController
 
   def index
     if all_filter_params_blank?
+      if user_signed_in? && current_user.admin?
       @members = Member.order(:last_name, :first_name)
+      else
+        @members = Member.where(steward: true).order(:last_name, :first_name)
+      end
     else
-      @members = Member.filter_members(filter_params)
+      if user_signed_in? && current_user.admin?
+        @members = Member.filter_members(filter_params)
+      else
+        @members = Member.where(steward: true).filter_members(filter_params)
+      end
     end
   end
 
