@@ -29,7 +29,11 @@
             <%= link_to "Event Calendar", events_path %>
           </li>
           <li class="text-inherit hover:scale-125">
-            <%= link_to "Stewards", members_path %>
+            <% if user_signed_in? && current_user.admin %>
+            <%= link_to 'Member List', members_path %>
+              <% else %>
+              <%= link_to "Stewards", members_path %>
+            <% end %>
           </li>
           <li class="text-inherit hover:scale-125">Bargaining Team</li>
           <li class="text-inherit hover:scale-125">
