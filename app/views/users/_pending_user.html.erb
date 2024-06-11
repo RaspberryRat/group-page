@@ -1,11 +1,11 @@
 <tr id="user_<%= user.id %>">
-  <td class="text-center text-blue-700 hover:text-lg hover:scale-125">
+  <td class="text-center text-blue-700 hover:text-lg hover:scale-125 border border-gray-200">
     <%= link_to user.id, user_path(user.id) %>
   </td>
-  <td class="text-center text-blue-700 hover:text-lg hover:scale-125">
+  <td class="text-center text-blue-700 hover:text-lg hover:scale-125 border border-gray-200">
     <%= link_to user.email, user_path(user.id) %>
   </td>
-  <td class="text-center" data-controller="auto-submit">
+  <td class="text-center border border-gray-200" data-controller="auto-submit">
     <%= form_with model: user do |form| %>
       <%= form.check_box :admin,
                          data: { action: 'click->auto-submit#click'}%>
@@ -13,7 +13,7 @@
                       data: { auto_submit_target: 'submit' }%>
     <% end %>
   </td>
-  <td class="text-center" data-controller="auto-submit">
+  <td class="text-center border border-gray-200" data-controller="auto-submit">
     <%= form_with model: user do |form| %>
       <%= form.check_box :poster,
                          data: { action: 'click->auto-submit#click'} %>
@@ -21,7 +21,7 @@
                       data: { auto_submit_target: 'submit' } %>
     <% end %>
   </td>
-  <td class="text-center" data-controller="auto-submit">
+  <td class="text-center border border-gray-200" data-controller="auto-submit">
     <%= form_with model: user do |form| %>
       <%= form.check_box :organizer,
                          data: { action: 'click->auto-submit#click'} %>
@@ -29,7 +29,7 @@
                       data: { auto_submit_target: 'submit' } %>
     <% end %>
   </td>
-  <td class="text-center">
+  <td class="text-center border border-gray-200">
     <%= user.created_at.strftime("%Y-%m-%d") %>
   </td>
   <td class="text-center p-2
