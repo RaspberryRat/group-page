@@ -100,19 +100,19 @@
   </div>
 </div>
 <table class="w-4/5 border-separate border-spacing-2 mt-6 divide-y divide-gray-200">
-  <thead class="bg-gray-50">
+  <thead>
   <tr>
-    <th class="text-gray-500 tracking-wider border border-gray-200">Name</th>
-    <th class="text-gray-500 tracking-wider border border-gray-200">Email</th>
-    <th class="text-gray-500 tracking-wider border border-gray-200">Phone Number</th>
-    <th class="text-gray-500 tracking-wider border border-gray-200">Region</th>
-    <th class="text-gray-500 tracking-wider border border-gray-200">Department</th>
-    <th class="text-gray-500 tracking-wider border border-gray-200">Classification</th>
-    <th class="text-gray-500 tracking-wider border border-gray-200">Subgroup</th>
-    <th class="text-gray-500 tracking-wider border border-gray-200">Executive Position?</th>
-    <th class="text-gray-500 tracking-wider border border-gray-200">Bargaining Team?</th>
+    <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Name</th>
+    <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Email</th>
+    <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Phone Number</th>
+    <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Region</th>
+    <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Department</th>
+    <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Classification</th>
+    <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Subgroup</th>
     <% if current_user.admin? %>
-      <th class="text-gray-500 tracking-wider border border-gray-200">Steward?</th>
+      <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Executive Position?</th>
+      <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Bargaining Team?</th>
+      <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Steward?</th>
     <% end %>
     <th></th>
     <th></th>
@@ -143,17 +143,18 @@
           <%= member.subgroup.name %>
         <% end %>
       </td>
-      <td class="text-center border border-gray-200">
-        <% if member.executive_id? %>
-          <%= member.executive.role %>
-        <% end %>
-      </td>
-      <td class="text-center border border-gray-200">
-        <% if member.bargaining? %>
-          Yes
-        <% end %>
-      </td>
       <% if current_user.admin? %>
+      <td class="text-center border border-gray-200">
+          <% if member.executive_id? %>
+            <%= member.executive.role %>
+          <% end %>
+        </td>
+        <td class="text-center border border-gray-200">
+          <% if member.bargaining? %>
+            Yes
+          <% end %>
+        </td>
+
 
       <td class="text-center border border-gray-200">
         <% if member.steward? %>
