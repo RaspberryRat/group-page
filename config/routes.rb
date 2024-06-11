@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'executives/index'
   root 'posts#index'
 
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :subgroups, only: [:index, :show]
 
-
+  resources :executives, only: [:index]
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

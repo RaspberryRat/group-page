@@ -3,8 +3,8 @@
 <div class="grid grid-cols-3 gap-4 justify-center">
   <% @bargaining_team.order(:first_name).each do |member| %>
     <ul class="bg-gray-50 w-72 p-6 pl-8 border rounded">
-      <li>
-        <span class="font-bold"> <%= member.full_name %></span>
+      <li class="text-blue-700 hover:text-lg hover:scale-125">
+        <span class="font-bold"> <%= link_to member.full_name, member_path(member) %></span>
       </li>
       <li>
         <%= image_tag 'missing-profile.png', size: '100x100' %>
