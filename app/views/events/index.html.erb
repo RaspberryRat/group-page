@@ -1,47 +1,44 @@
-
-<% flash.each do |type, msg| %>
-  <div class="mb-6 w-max
+<div class="w-4/5">
+  <% flash.each do |type, msg| %>
+    <div class="mb-6 w-max
     bg-blue-100 border border-blue-500 text-blue-700 px-4 py-3 rounded
     relative" role="alert">
-    <%= msg %>
-  </div>
-<% end %>
+      <%= msg %>
+    </div>
+  <% end %>
 
-<div class="flex-col flex w-4/5"><h1 class="text-4xl font-bold">Event List</h1>
-  <% if user_signed_in? && current_user.organizer? %>
-    <div class="mb-12 p-2
+  <div class="flex-col flex w-4/5"><h1 class="text-4xl font-bold">Event List</h1>
+    <% if user_signed_in? && current_user.organizer? %>
+      <div class="mb-12 p-2
         text-white rounded-2xl border-2 border-black
         bg-blue-500 hover:bg-blue-600 active:bg-blue-700
         focus:outline-white focus:ring focus:ring-violet-300
         w-max text-center self-start mt-6">
-      <%= link_to "New Event", new_event_path %>
-    </div>
-  <% end %>
-</div>
+        <%= link_to "New Event", new_event_path %>
+      </div>
+    <% end %>
+  </div>
 
-<div><%= month_calendar(events: @meetings) do |date, meetings| %>
-    <%= date.day %>
-
-
+  <div><%= month_calendar(events: @meetings) do |date, meetings| %>
+      <%= date.day %>
 
 
+    <% end %></div>
+
+
+  <h2 class="font-bold text-3xl mb-12 mt-6">List of upcoming events</h2>
+  <hr class="my-4 border-t border-gray-700 w-4/5 mx-auto">
+
+  <% @events.each do |event| %>
+    <ul class="flex flex-col gap-4 text-lg">
+      <li class="font-bold text-xl text-blue-600 hover:text-blue-200 active:text-blue-900">
+        <%= link_to event.name, event %>
+      </li>
+      <li><span class="font-bold">When:</span> <%= event.date.strftime("%A, %B %d, %Y") %></li>
+      <li><span class="font-bold">Where:</span> <%= event.location %></li>
+      <hr class="my-4 border-t border-gray-200 w-2/5 mx-auto">
+      <li class="p-6 mr-12"><%= event.description.to_plain_text.truncate(400) %></li>
+      <hr class="my-4 border-t border-gray-200 w-2/5 mx-auto">
+    </ul>
+    <hr class="my-4 border-t border-gray-600 w-4/5 mx-auto">
   <% end %></div>
-
-
-
-<h2 class="font-bold text-3xl mb-12 mt-6">List of upcoming events</h2>
-<hr class="my-4 border-t border-gray-700 w-4/5 mx-auto">
-
-<% @events.each do |event| %>
-<ul class="flex flex-col gap-4 text-lg">
-    <li class="font-bold text-xl text-blue-600 hover:text-blue-200 active:text-blue-900">
-      <%= link_to event.name, event %>
-    </li>
-  <li><span class="font-bold">When:</span> <%= event.date.strftime("%A, %B %d, %Y") %></li>
-  <li><span class="font-bold">Where:</span> <%= event.location %></li>
-  <hr class="my-4 border-t border-gray-200 w-2/5 mx-auto">
-  <li class="p-6 mr-12"><%= event.description %></li>
-  <hr class="my-4 border-t border-gray-200 w-2/5 mx-auto">
-</ul>
-  <hr class="my-4 border-t border-gray-600 w-4/5 mx-auto">
-  <% end %>
