@@ -13,6 +13,7 @@
   <% end %>
 
   <div class="field">
+    <span>New</span>
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
@@ -22,6 +23,7 @@
   </div>
 
   <div class="field">
+    <span>New</span>
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>

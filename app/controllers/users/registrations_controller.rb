@@ -3,7 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  after_action :sign_up_message
+  # after_action :sign_up_message
 
   # GET /resource/sign_up
   # def new
@@ -11,9 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    sign_up_message if resource.persisted?
+  end
 
   # GET /resource/edit
   # def edit
@@ -63,8 +64,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_message
-    if resource.persisted?
-      flash[:notice] = 'Your registration is on hold, it must be approved by an admin'
-    end
-  end
+       flash[:notice] = 'Your registration is on hold, it must be approved by an admin'
+   end
 end
