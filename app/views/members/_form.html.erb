@@ -3,7 +3,7 @@
 
       <% if member.errors.any? %>
         <div id="error_explanation mb-8">
-          <h2><%= pluralize(member.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
           <ul class="w-max bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
             <% member.errors.full_messages.each do |message| %>
               <li><%= message %></li>
@@ -17,6 +17,7 @@
         <%= flash[:error] %>
       </div>
     <% end %>
+
     <div class="flex gap-6 mb-6 mt-10">
       <div>
         <%= form.label :first_name, "First Name:", class: "mr-6" %>
