@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-
+  before_action :authorized_poster, except: [:show, :index]
   def index
     @posts = Post.all
   end
@@ -46,5 +46,9 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :content)
+  end
+
+  def authorized_poster
+    redirect_to root_path, status: :forbidden unless current_user.admin? || current_user.poster?
   end
 end
