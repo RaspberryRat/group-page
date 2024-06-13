@@ -4,8 +4,8 @@ class Event < ApplicationRecord
   validates :location, presence: true
   validates :date, presence: true
 
-  scope :past, -> { where("date < ?", Time.now)}
-  scope :future, -> { where("date > ?", Time.now)}
+  scope :past, -> { where("date < ?", Time.now) }
+  scope :future, -> { where("date > ?", Time.now).order(:date).limit(6) }
 
 
   def start_time

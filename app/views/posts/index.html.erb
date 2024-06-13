@@ -14,36 +14,54 @@
   <% end %>
 <% end %>
 
-<div class="flex-col flex w-4/5">
-  <h1 class="text-4xl font-bold mb-12">News</h1>
-  <% if user_signed_in? && current_user.poster? %>
-    <div class="mb-12 p-2
+<div class="flex justify-between">
+  <div class="flex-col flex w-4/5">
+    <h1 class="text-4xl font-bold mb-12">News</h1>
+    <% if user_signed_in? && current_user.poster? %>
+      <div class="mb-12 p-2
         text-white rounded-2xl border-2 border-black
         bg-blue-500 hover:bg-blue-600 active:bg-blue-700
         focus:outline-white focus:ring focus:ring-violet-300
         w-max text-center justify-self-end self-end">
-      <%= link_to "New Post", new_post_path %>
-    </div>
-  <% end %>
-
-  <div class="pl-6">
-    <% @posts.each do |post| %>
-    <ul class="mb-16 flex flex-col justify-start">
-      <li class="flex flex-row justify-between">
-        <div class="font-bold text-lg underline text-group-blue hover:text-blue-600 hover:text-xl">
-          <%= link_to post.title, post %>
-        </div>
-        <div class="self-end italic text-sm">
-          <%= post.post_date.strftime("%B %d, %Y") %>
-        </div>
-      </li>
-      <hr class="w-2/5 h-px mx-auto my-4 bg-gray-400 border-0 rounded md:my-4 dark:bg-gray-700">
-       <li>
-        <%= post.content.to_plain_text.truncate(200) %>
-      </li>
-    </ul>
-      <hr class="h-px my-12 bg-gray-300 border-0 dark:bg-gray-700">
+        <%= link_to "New Post", new_post_path %>
+      </div>
     <% end %>
 
+    <div class="pl-6">
+      <% @posts.each do |post| %>
+        <ul class="mb-16 flex flex-col justify-start">
+          <li class="flex flex-row justify-between">
+            <div class="font-bold text-lg underline text-group-blue hover:text-blue-600 hover:text-xl">
+              <%= link_to post.title, post %>
+            </div>
+            <div class="self-end italic text-sm">
+              <%= post.post_date.strftime("%B %d, %Y") %>
+            </div>
+          </li>
+          <hr class="w-2/5 h-px mx-auto my-4 bg-gray-400 border-0 rounded md:my-4 dark:bg-gray-700">
+          <li>
+            <%= post.content.to_plain_text.truncate(200) %>
+          </li>
+        </ul>
+        <hr class="h-px my-12 bg-gray-300 border-0 dark:bg-gray-700">
+      <% end %>
+    </div>
+  </div>
+  <div class="sidebar pr-8 mt-40">
+    <h2 class="font-bold text-lg">Upcoming Events</h2>
+    <% if @future_events.nil? %>
+      <div>No events currently planned</div>
+    <% else %>
+      <% @future_events.each do |event| %>
+        <ul class="text-md mt-6">
+          <li class="font-bold underline text-group-blue hover:text-blue-600 hover:text-lg">
+            <%= link_to event.name, event_path(event) %>
+          </li>
+          <li class="italic">
+            <%= event.date.strftime("%B %d, %Y") %>
+          </li>
+        </ul>
+      <% end %>
+    <% end %>
   </div>
 </div>
