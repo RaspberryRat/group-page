@@ -3,7 +3,7 @@
   <div class="flex flex-row justify-between mb-12">
     <h2 class="text-4xl font-bold"><%= @post.title %></h2>
     <div class="self-end italic text-sm">
-      <%= @post.created_at.strftime("%B %d, %Y") %>
+      <%= @post.post_date.strftime("%B %d, %Y") %>
     </div>
   </div>
 

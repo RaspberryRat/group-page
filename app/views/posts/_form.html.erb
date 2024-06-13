@@ -5,9 +5,15 @@
     </div>
 
     <div class="field mb-6">
+        <%= form.label :date %>
+        <%= form.date_field :date %>
+    </div>
+
+    <div class="field mb-6">
       <%= form.label :content %>
       <%= form.rich_text_area :content %>
     </div>
+
 
     <div class="field flex w-max
       p-2 text-white rounded-2xl border-2 border-black
