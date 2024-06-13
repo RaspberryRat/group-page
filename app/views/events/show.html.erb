@@ -8,4 +8,19 @@
   <li class="p-6 mr-12"><%= event.description %></li>
   <hr class="my-4 border-t border-gray-200 w-2/5 mx-auto">
 </ul>
+<% if user_signed_in? && current_user.admin? || user_signed_in? && current_user.organizer? %>
+  <ul class="pl-6 flex flex-row gap-6">
+    <li class="p-2 text-white rounded-2xl border-2 border-black
+        bg-blue-500 hover:bg-blue-600 active:bg-blue-700
+        focus:outline-white focus:ring focus:ring-violet-300">
+      <%= link_to "Edit Event", edit_event_path(event) %></li>
+    <li class="p-2 text-white rounded-2xl border-2 border-black
+        bg-blue-500 hover:bg-blue-600 active:bg-blue-700
+        focus:outline-white focus:ring focus:ring-violet-300">
+      <%= link_to "Delete Event", event_path(event),
+                  data: { turbo_method: :delete,
+                          turbo_confirm: "Are you sure you want to delete? This action cannot be undone."}%>
+    </li>
+  </ul>
+<% end %>
 <hr class="my-4 border-t border-gray-300 w-4/5 mx-auto">
