@@ -20,3 +20,13 @@ FactoryBot.define do
     end
   end
 end
+
+FactoryBot.define do
+  factory :post do
+    title { Faker::Book.title }
+
+    trait :chosen_date do
+      date { Faker::Date.backward(days: 365) }
+    end
+  end
+end
