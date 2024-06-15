@@ -1,4 +1,21 @@
 <div class="pl-6 w-4/5"><%= form_with model: post do |form| %>
+
+    <% if post.errors.any? %>
+      <div id="error_explanation mb-8">
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <ul class="w-max bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+          <% post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% if flash[:error] %>
+      <div class="error-message w-max bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
     <div class="field flex flex-col mb-6">
       <%= form.label :title %>
       <%= form.text_field :title %>
