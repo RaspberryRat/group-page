@@ -22,7 +22,6 @@ class Member < ApplicationRecord
 
   def subgroup_position_check(params)
     return if params.nil? || params.empty?
-    debugger
     params[:position_id] = '' if params[:position_id] == 'Not Applicable'
   end
 
