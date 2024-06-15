@@ -8,7 +8,8 @@ class Event < ApplicationRecord
   scope :future, -> { where("date > ?", Time.now).order(:date).limit(6) }
 
 
+  # Method needed because requirements in simple calendar gem
   def start_time
-    self.date ##Where 'start' is a attribute of type 'Date' accessible through MyModel's relationship
+    self.date
   end
 end
