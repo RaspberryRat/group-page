@@ -13,7 +13,8 @@ roles = [
   { role: 'Vice-President' },
   { role: 'Treasurer' },
   { role: 'Secretary' },
-  { role: 'Member at Large' }
+  { role: 'Member at Large' },
+  { role: 'None' }
 ]
 
 # Create positions with predefined roles
@@ -93,7 +94,8 @@ subgroups = [
   { name: "SP Winnipeg Central" },
   { name: "SP Winnipeg" },
   { name: "SP Yellowknife" },
-  { name: "SP Yukon" }
+  { name: "SP Yukon" },
+  { name: 'None' }
 ]
 
 subgroups.each do |subgroup_params|
@@ -113,7 +115,8 @@ roles = [
   { role: 'Bargaining Team Coordinator' },
   { role: 'Mobilization Coordinator' },
   { role: 'Recognition Coordinator' },
-  { role: 'Parliamentarian' }
+  { role: 'Parliamentarian' },
+  { role: 'None' }
 
 ]
 

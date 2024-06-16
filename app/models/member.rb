@@ -22,7 +22,9 @@ class Member < ApplicationRecord
 
   def subgroup_position_check(params)
     return if params.nil? || params.empty?
-    params[:position_id] = '' if params[:position_id] == 'Not Applicable'
+    params[:position_id] = '' if params[:position_id] == 'None'
+    params[:subgroup_id] = '' if params[:subgroup_id] == 'None'
+    params[:executive_id] = '' if params[:executive_id] == 'None'
   end
 
   def role
@@ -35,13 +37,13 @@ class Member < ApplicationRecord
   end
 
   def subgroup_requires_position
-    if subgroup_id.present? && position_id.blank?
+    if (subgroup_id.present? && !subgroup.name == 'None') && position_id.blank?
       errors.add(:position_id, "must be chosen if subgroup is chosen.")
     end
   end
 
   def position_requires_subgroup
-    if position_id.present? && subgroup_id.blank?
+    if (position_id.present? && !position.role == 'None') && subgroup_id.blank?
       errors.add(:subgroup_id, "must be chosen if a position is chosen.")
     end
   end

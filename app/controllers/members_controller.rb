@@ -74,10 +74,19 @@ class MembersController < ApplicationController
   end
 
   def remove_not_applicable_position
-    return if params[:member][:position_id].blank?
+    unless params[:member][:position_id].blank?
+      params[:member][:position_id] = '' if Position.find_by(id: params[:member][:position_id]).role == 'None'
+    end
 
-    params[:member][:position_id] = '' if Position.find_by(id: params[:member][:position_id]).role == 'Not Applicable'
+    unless params[:member][:executive_id].blank?
+      params[:member][:executive_id] = '' if Executive.find_by(id: params[:member][:executive_id]).role == 'None'
+    end
+
+    unless params[:member][:subgroup_id].blank?
+      params[:member][:subgroup_id] = '' if Subgroup.find_by(id: params[:member][:subgroup_id]).name == 'None'
+    end
   end
+
   def filter_params
     params.except(:commit).permit(:subgroup_id, :department_id, :classification_id, :region_id)
   end
