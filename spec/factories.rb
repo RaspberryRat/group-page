@@ -192,5 +192,13 @@ FactoryBot.define do
     trait :executive do
       association :executive, factory: :executive
     end
+
+    trait :steward_member do
+      steward { true }
+    end
+
+    trait :bargaining_member do
+      bargaining { true }
+    end
   end
 end
