@@ -16,4 +16,19 @@ RSpec.describe 'Edit Member', type: :feature, js: true do
     visit members_path
     expect(page).to_not have_content(member.full_name)
   end
+
+  scenario 'non-admin cannot delete' do
+    sign_in non_admin_user
+    member = FactoryBot.create(:member, :steward_member)
+    visit members_path
+    expect(page).to have_content(member.full_name)
+    expect(page).to_not have_content('Delete Member')
+  end
+
+  scenario 'not logged in cannot delete' do
+    member = FactoryBot.create(:member, :steward_member)
+    visit members_path
+    expect(page).to have_content(member.full_name)
+    expect(page).to_not have_content('Delete Member')
+  end
 end
