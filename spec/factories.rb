@@ -2,6 +2,18 @@ FactoryBot.define do
   factory :user do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
+
+    trait :admin_account do
+      admin { true }
+    end
+
+    trait :approved do
+      approve { true }
+    end
+
+    trait :can_post do
+      poster { true }
+    end
   end
 end
 
