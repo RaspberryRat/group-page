@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   has_rich_text :description
-  validates :name, presence: true
-  validates :location, presence: true
+  validates :name, presence: true, length: { minimum: 5 }
+  validates :location, presence: true, length: { minimum: 5 }
   validates :date, presence: true
 
   scope :past, -> { where("date < ?", Time.now) }

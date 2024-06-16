@@ -14,6 +14,10 @@ FactoryBot.define do
     trait :can_post do
       poster { true }
     end
+
+    trait :event_organizer do
+      organizer { true }
+    end
   end
 end
 
