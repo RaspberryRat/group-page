@@ -519,6 +519,15 @@
               <RakeTaskImpl description="Truncate all/specified *.log files in log/ to zero bytes (specify which logs with LOGS=test,development)" fullCommand="log:clear" id="clear" />
             </subtasks>
           </RakeTaskImpl>
+          <RakeTaskImpl description="Run all specs in spec directory (excluding plugin specs)" fullCommand="spec" id="spec" />
+          <RakeTaskImpl id="spec">
+            <subtasks>
+              <RakeTaskImpl description="Run the code examples in spec/features" fullCommand="spec:features" id="features" />
+              <RakeTaskImpl description="Run the code examples in spec/models" fullCommand="spec:models" id="models" />
+              <RakeTaskImpl description="" fullCommand="spec:prepare" id="prepare" />
+              <RakeTaskImpl description="" fullCommand="spec:statsetup" id="statsetup" />
+            </subtasks>
+          </RakeTaskImpl>
           <RakeTaskImpl description="Report code statistics (KLOCs, etc) from the application or engine" fullCommand="stats" id="stats" />
           <RakeTaskImpl id="stimulus">
             <subtasks>
@@ -620,6 +629,42 @@
                   <RakeTaskImpl description="Install Turbo into the app with asset pipeline" fullCommand="turbo:install:importmap" id="importmap" />
                   <RakeTaskImpl description="Install Turbo into the app with webpacker" fullCommand="turbo:install:node" id="node" />
                   <RakeTaskImpl description="Switch on Redis and use it in development" fullCommand="turbo:install:redis" id="redis" />
+                </subtasks>
+              </RakeTaskImpl>
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl id="webdrivers">
+            <subtasks>
+              <RakeTaskImpl id="chromedriver">
+                <subtasks>
+                  <RakeTaskImpl description="Force remove chromedriver" fullCommand="webdrivers:chromedriver:remove" id="remove" />
+                  <RakeTaskImpl description="Remove and download updated chromedriver if necessary" fullCommand="webdrivers:chromedriver:update[version]" id="update[version]" />
+                  <RakeTaskImpl description="Print current chromedriver version" fullCommand="webdrivers:chromedriver:version" id="version" />
+                  <RakeTaskImpl description="" fullCommand="webdrivers:chromedriver:update" id="update" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl id="edgedriver">
+                <subtasks>
+                  <RakeTaskImpl description="Force remove edgedriver" fullCommand="webdrivers:edgedriver:remove" id="remove" />
+                  <RakeTaskImpl description="Remove and download updated edgedriver if necessary" fullCommand="webdrivers:edgedriver:update[version]" id="update[version]" />
+                  <RakeTaskImpl description="Print current edgedriver version" fullCommand="webdrivers:edgedriver:version" id="version" />
+                  <RakeTaskImpl description="" fullCommand="webdrivers:edgedriver:update" id="update" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl id="geckodriver">
+                <subtasks>
+                  <RakeTaskImpl description="Force remove geckodriver" fullCommand="webdrivers:geckodriver:remove" id="remove" />
+                  <RakeTaskImpl description="Remove and download updated geckodriver if necessary" fullCommand="webdrivers:geckodriver:update[version]" id="update[version]" />
+                  <RakeTaskImpl description="Print current geckodriver version" fullCommand="webdrivers:geckodriver:version" id="version" />
+                  <RakeTaskImpl description="" fullCommand="webdrivers:geckodriver:update" id="update" />
+                </subtasks>
+              </RakeTaskImpl>
+              <RakeTaskImpl id="iedriver">
+                <subtasks>
+                  <RakeTaskImpl description="Force remove IEDriverServer" fullCommand="webdrivers:iedriver:remove" id="remove" />
+                  <RakeTaskImpl description="Remove and download updated IEDriverServer if necessary" fullCommand="webdrivers:iedriver:update[version]" id="update[version]" />
+                  <RakeTaskImpl description="Print current IEDriverServer version" fullCommand="webdrivers:iedriver:version" id="version" />
+                  <RakeTaskImpl description="" fullCommand="webdrivers:iedriver:update" id="update" />
                 </subtasks>
               </RakeTaskImpl>
             </subtasks>
