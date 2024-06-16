@@ -1,8 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe 'Member', type: :feature do
+RSpec.describe 'New Member', type: :feature do
 
   let(:admin_user) { FactoryBot.create(:user, :admin_account, :approved) }
+  let(:non_admin_user) { FactoryBot.create(:user, :approved) }
 
   scenario 'valid inputs' do
     sign_in admin_user
@@ -296,5 +297,11 @@ RSpec.describe 'Member', type: :feature do
     sign_in admin_user
     visit members_path
     expect(page).to have_content(non_steward.full_name)
+  end
+
+  scenario 'unauthorized user' do
+    sign_in non_admin_user
+    visit new_member_path
+    expect(page.status_code).to eq(403)
   end
 end
