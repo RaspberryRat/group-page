@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe 'Pending user', type: :feature, js: true do
 
   let(:admin_user) { FactoryBot.create(:user, :admin_account, :approved) }
-  let(:non_admin) { FactoryBot.create(:user, :approved) }
 
   scenario 'show pending user' do
     sign_in admin_user
