@@ -37,14 +37,14 @@ class Member < ApplicationRecord
   end
 
   def subgroup_requires_position
-    if (subgroup_id.present? && !subgroup.name == 'None') && position_id.blank?
-      errors.add(:position_id, "must be chosen if subgroup is chosen.")
+    if subgroup_id.present? && position_id.blank?
+      errors.add(:position_id, "must be chosen if subgroup is chosen.") unless subgroup.name == 'None'
     end
   end
 
   def position_requires_subgroup
-    if (position_id.present? && !position.role == 'None') && subgroup_id.blank?
-      errors.add(:subgroup_id, "must be chosen if a position is chosen.")
+    if position_id.present? && subgroup_id.blank?
+      errors.add(:subgroup_id, "must be chosen if a position is chosen.") unless position.role == 'None'
     end
   end
 end
