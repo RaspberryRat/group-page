@@ -51,16 +51,16 @@
             <li class="nav-btn">
               <%= link_to 'Edit User', edit_user_registration_path %>
             </li>
-            <li class="hover:text-xl text-inherit active:text-gray-600">
+            <li class="text-inherit nav-btn">
               <%= button_to "Log Out", destroy_user_session_path, method: :delete %>
             </li>
           <% else %>
-            <li class="hover:text-xl text-inherit active:text-gray-600">
+            <li class="text-inherit nav-btn">
               <%= link_to "Log In", new_user_session_path %>
             </li>
           <% end %>
         <% unless user_signed_in? %>
-          <li class="hover:text-xl text-inherit active:text-gray-600">
+          <li class="nav-btn text-inherit">
               <%= link_to "Sign Up", new_user_registration_path %>
           </li>
         <% end %>

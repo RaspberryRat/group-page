@@ -13,14 +13,20 @@
   transform: scaley(1);
 }
 
-.nav-btn {
+.nav-btn,
+.calendar-nav-btn {
   transition: transform 250ms ease;
 }
 
-.nav-btn:hover {
+.nav-btn:hover,
+.calendar-nav-btn:hover {
   transform: scale(1.2);
 }
 
 .nav-btn:active {
   color: black;
+}
+
+.calendar-nav-btn:active {
+  color: text-blue-600
 }

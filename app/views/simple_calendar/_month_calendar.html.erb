@@ -4,11 +4,11 @@
       <%= t('date.month_names')[start_date.month] %> <%= start_date.year %></time>
     <nav class="text-xl text-blue-400 flex flex-row justify-between mt-4 mb-4">
       <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view,
-        class: 'hover:text-blue-300 active:text-blue-600'%>
+        class: 'calendar-nav-btn active:text-blue-600'%>
       <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view,
-        class: 'hover:text-blue-300 active:text-blue-600' %>
+        class: 'calendar-nav-btn active:text-blue-600' %>
       <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view,
-        class: 'hover:text-blue-300 active:text-blue-600'%>
+        class: 'calendar-nav-btn active:text-blue-600'%>
     </nav>
   </div>
 
@@ -36,7 +36,7 @@
             <div class="pt-2 space-y-2 overflow-hidden">
               <% events.each do |event| %>
                 <div class="text-sm leading-tight line-clamp-2
-                  text text-blue-400 hover:text-blue-300 active:text-blue-600">
+                  text text-blue-400 calendar-nav-btn active:text-blue-600">
                   <%= link_to event.name, event %>
                 </div>
               <% end %>
