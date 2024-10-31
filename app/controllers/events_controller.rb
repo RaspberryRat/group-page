@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @events = Event.future
 
     start_date = params.fetch(:start_date, Date.today).to_date
     @meetings = Event.where(date: start_date.beginning_of_month.beginning_of_day..start_date.end_of_month.end_of_day)

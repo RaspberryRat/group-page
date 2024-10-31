@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authorized_poster, except: [:show, :index]
   def index
-    @posts = Post.all
+    @posts = Post.order(date: :desc)
     @future_events = Event.future
   end
 
