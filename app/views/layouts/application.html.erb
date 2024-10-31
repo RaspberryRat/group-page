@@ -20,35 +20,35 @@
 
         <ul class="flex flex-row gap-5 text-white justify-center pt-8">
           <% if user_signed_in? && current_user.admin? %>
-            <li class="text-inherit hover:text-xl active:text-gray-600">
+            <li class="text-inherit nav-btn">
               <%= link_to "User List", users_path  %>
             </li>
           <% end %>
 
-          <li class="text-inherit hover:text-xl active:text-gray-600">
+          <li class="text-inherit nav-btn">
             <%= link_to "Event Calendar", events_path %>
           </li>
-          <li class="text-inherit hover:text-xl ">
+          <li class="text-inherit nav-btn">
             <% if user_signed_in? && current_user.admin %>
             <%= link_to 'Member List', members_path %>
               <% else %>
               <%= link_to "Stewards", members_path %>
             <% end %>
           </li>
-          <li class="text-inherit hover:text-xl active:text-gray-600">
+          <li class="text-inherit nav-btn">
             <%= link_to 'Bargaining Team', bargaining_team_path %>
           </li>
-          <li class="hover:text-xl active:text-gray-600">
+          <li class="nav-btn">
             <%= link_to 'SP Executive', executives_path %>
           </li>
-          <li class="text-inherit hover:text-xl active:text-gray-600">
+          <li class="text-inherit nav-btn">
             <%= link_to 'Subgroups', subgroups_path %>
           </li>
         </ul>
 
         <ul class="flex flex-row gap-3 text-white justify-center pt-8 mr-12">
           <% if user_signed_in? %>
-            <li class="hover:text-xl active:text-gray-600">
+            <li class="nav-btn">
               <%= link_to 'Edit User', edit_user_registration_path %>
             </li>
             <li class="hover:text-xl text-inherit active:text-gray-600">

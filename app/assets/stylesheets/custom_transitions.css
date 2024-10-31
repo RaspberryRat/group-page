@@ -12,3 +12,15 @@
 .expand {
   transform: scaley(1);
 }
+
+.nav-btn {
+  transition: transform 250ms ease;
+}
+
+.nav-btn:hover {
+  transform: scale(1.2);
+}
+
+.nav-btn:active {
+  color: black;
+}
