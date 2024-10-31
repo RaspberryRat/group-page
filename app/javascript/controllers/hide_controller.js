@@ -1,17 +1,19 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-    static targets = [ 'element', 'btn' ]
+    static targets = ['element', 'btn']
 
     show() {
         const element = this.elementTarget
         const button = this.btnTarget
 
-        if (element.classList.contains('hidden')) {
-            element.classList.remove('hidden')
+        if (element.classList.contains('retract')) {
+            element.classList.remove('retract')
+            element.classList.add('expand')
             this.rename_button(button);
-        } else {
-            element.classList.add('hidden');
+        } else if (element.classList.contains('expand')) {
+            element.classList.remove('expand')
+            element.classList.add('retract');
             this.rename_button(button);
         }
     }

@@ -33,7 +33,7 @@
           bg-blue-500 hover:bg-blue-600 active:bg-blue-700
           focus:outline-white focus:ring focus:ring-violet-300
           w-max text-center self-start">Show Filters</button>
-  <div class="flex hidden" data-hide-target="element">
+  <div class="flex filters retract" data-hide-target="element">
     <div>
       <%= form_with url: members_path, method: :get, local: true do |f| %>
         <div class="mb-4 flex justify-start gap-16 items-center">
@@ -62,7 +62,7 @@
                                           selected: params[:subgroup_id]) %>
         </div>
 
-       
+
         <div class="text-center p-2
         text-white rounded-2xl border-2 bg-blue-600
         hover:bg-blue-500 active:bg-blue-900

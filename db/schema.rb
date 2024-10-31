@@ -120,35 +120,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_200331) do
     t.string "name"
   end
 
-  create_table "richer_text_json_texts", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "body"
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["record_type", "record_id", "name"], name: "index_richer_texts_rich_json_uniqueness", unique: true
-    t.index ["record_type", "record_id"], name: "index_richer_text_json_texts_on_record"
-  end
-
-  create_table "richer_text_o_embeds", force: :cascade do |t|
-    t.jsonb "fields"
-    t.string "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "richer_text_rich_texts", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "body"
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["record_type", "record_id", "name"], name: "index_richer_texts_rich_texts_uniqueness", unique: true
-    t.index ["record_type", "record_id"], name: "index_richer_text_rich_texts_on_record"
-  end
-
   create_table "subgroups", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

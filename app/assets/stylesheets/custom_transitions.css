@@ -1,0 +1,14 @@
+.pending-users,
+.filters {
+  transition: transform 500ms ease;
+  transform-origin: top center;
+  transform: scaley(0);
+}
+
+.retract {
+  transform: scaley(0);
+}
+
+.expand {
+  transform: scaley(1);
+}
