@@ -20,7 +20,7 @@
 
 .nav-btn:hover,
 .calendar-nav-btn:hover {
-  transform: scale(1.2);
+  transform: scale(1.25);
 }
 
 .nav-btn:active {

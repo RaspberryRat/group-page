@@ -20,7 +20,7 @@
     <% if user_signed_in? && current_user.poster? %>
       <div class="mb-12 p-2
         text-white rounded-2xl border-2 border-black
-        bg-blue-500 hover:bg-blue-600 active:bg-blue-700
+        bg-blue-500 hover:scale-125 active:bg-blue-700
         focus:outline-white focus:ring focus:ring-violet-300
         w-max text-center justify-self-end self-end">
         <%= link_to "New Post", new_post_path %>
@@ -31,7 +31,7 @@
       <% @posts.each do |post| %>
         <ul class="mb-16 flex flex-col justify-start">
           <li class="flex flex-row justify-between">
-            <div class="font-bold text-lg underline text-group-blue hover:text-blue-600 hover:text-xl">
+            <div class="font-bold text-lg underline text-group-blue hover:text-blue-600 hover:scale-125">
               <%= link_to post.title, post %>
             </div>
             <div class="self-end italic text-sm">
@@ -55,7 +55,7 @@
     <% else %>
       <% @future_events.each do |event| %>
         <ul class="text-md mt-6">
-          <li class="font-bold underline text-group-blue hover:text-blue-600 hover:text-lg">
+          <li class="font-bold underline text-group-blue hover:text-blue-600 hover:scale-125">
             <%= link_to event.name, event_path(event) %>
           </li>
           <li class="italic">
