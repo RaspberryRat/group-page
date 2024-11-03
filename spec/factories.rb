@@ -1,4 +1,7 @@
 FactoryBot.define do
+
+
+
   factory :user do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
@@ -22,6 +25,9 @@ FactoryBot.define do
 end
 
 FactoryBot.define do
+
+
+
   factory :event  do
     name { Faker::Name.name }
     location { Faker::Address.full_address }
@@ -38,6 +44,9 @@ FactoryBot.define do
 end
 
 FactoryBot.define do
+
+
+
   factory :post do
     title { Faker::Book.title }
 
@@ -57,6 +66,10 @@ role_list = [
 ]
 
 FactoryBot.define do
+
+
+
+
   factory :position do
     role { role_list.sample[:role]}
   end
@@ -72,6 +85,9 @@ region_list = [
 ]
 
 FactoryBot.define do
+
+
+
   factory :region do
     name { region_list.sample[:name] }
   end
@@ -86,6 +102,9 @@ department_list = [
 ]
 
 FactoryBot.define do
+
+
+
   factory :department do
     name { department_list.sample[:name] }
   end
@@ -104,6 +123,9 @@ classification_list = [
 ]
 
 FactoryBot.define do
+
+
+
   factory :classification do
     name { classification_list.sample[:name] }
   end
@@ -144,6 +166,9 @@ subgroup_list = [
 ]
 
 FactoryBot.define do
+
+
+
   factory :subgroup do
     name { subgroup_list.sample[:name] }
   end
@@ -165,12 +190,17 @@ exec_role_list = [
 ]
 
 FactoryBot.define do
+
+
+
   factory :executive do
     role { exec_role_list.sample[:role] }
   end
 end
 
 FactoryBot.define do
+
+
   factory :member do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }

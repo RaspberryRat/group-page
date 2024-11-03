@@ -31,6 +31,16 @@
       <%= form.rich_text_area :content %>
     </div>
 
+    <div class="field mb-6">
+      <%= form.label :tag_ids, "Tags" %>
+      <%= form.collection_check_boxes :tag_ids, @tags, :id, :name do |tag|  %>
+        <div>
+          <%= tag.check_box %>
+          <%= tag.label %>
+        </div>
+      <% end %>
+    </div>
+
 
     <div class="field flex w-max
       p-2 text-white rounded-2xl border-2 border-black
