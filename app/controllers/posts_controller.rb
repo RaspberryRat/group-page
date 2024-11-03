@@ -13,9 +13,17 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
+
+    # Check for new tag on the post
+    if params[:new_tag].present?
+      @tag = Tag.find_or_create_by(name: params[:new_tag].downcase)
+      @post.tags << @tag unless @post.tags.include?(@tag)
+    end
+
     if @post.save
-      redirect_to @post
+      redirect_to @post, notice: 'Post was successfully created.'
     else
+      @tags = Tag.all
       render :new, status: :unprocessable_entity
     end
   end
@@ -32,9 +40,21 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 
+    # Check for new tag on the post
+    if params[:new_tag].present?
+      @tag = Tag.find_or_create_by(name: params[:new_tag].downcase)
+      @post.tags << @tag unless @post.tags.include?(@tag)
+    end
+
     if @post.update(post_params)
+      if params[:new_tag].present?
+        @tag = Tag.find_or_create_by(name: params[:new_tag].downcase)
+        @post.tags << @tag unless @post.tags.include?(@tag)
+      end
+
       redirect_to @post, notice: 'Post was successfully updated.'
     else
+      @tags = Tag.all
       render :edit, status: :unprocessable_entity
     end
   end
