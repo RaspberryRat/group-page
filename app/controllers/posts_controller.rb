@@ -48,7 +48,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :content, :date)
+    params.require(:post).permit(:title, :content, :date, tag_ids: [])
   end
 
   def authorized_poster
