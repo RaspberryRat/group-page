@@ -35,7 +35,7 @@
           w-max text-center self-start">Show Filters</button>
 
         <div class="flex filters retract" data-hide-target="element">
-          <%= form_with url: tags_path, method: :get, local: true do |form| %>
+          <%= form_with url: posts_path, method: :get, local: true do |form| %>
             <div class="field mb-6 grid grid-cols-3 gap-3">
               <%= form.collection_check_boxes :tag_ids, @tags, :id, :name do |tag|  %>
                 <div>
@@ -51,6 +51,12 @@
               <%= form.submit 'Filter' %>
             </div>
           <% end %>
+          <div class="text-center p-2
+              text-white rounded-2xl border-2 bg-blue-600
+              hover:bg-blue-500 active:bg-blue-900
+              w-32 text-center self-end">
+            <%= button_to 'Clear Filters', posts_path, method: :get %>
+          </div>
         </div>
       </div>
 

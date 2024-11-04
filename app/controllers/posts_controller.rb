@@ -1,9 +1,14 @@
 class PostsController < ApplicationController
   before_action :authorized_poster, except: [:show, :index]
   def index
-    @posts = Post.order(date: :desc)
     @future_events = Event.future
     @tags = Tag.all
+
+    if selected_tags.blank?
+      @posts = Post.all.order(date: :desc)
+    else
+      @posts = Post.joins(:tags).where(tags: { id: selected_tags.pluck(:id)}).distinct.order(date: :desc)
+    end
   end
 
   def new
@@ -13,7 +18,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-
 
     # Check for new tag on the post
     if params[:new_tag].present?
@@ -74,5 +78,13 @@ class PostsController < ApplicationController
 
   def authorized_poster
     redirect_to root_path, status: :forbidden unless current_user.admin? || current_user.poster?
+  end
+
+  def filter_params
+    params.except(:commit).permit(tag_ids: [])
+  end
+
+  def selected_tags
+    Tag.where(id: filter_params[:tag_ids])
   end
 end
