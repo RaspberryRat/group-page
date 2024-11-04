@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.order(date: :desc)
     @future_events = Event.future
+    @tags = Tag.all
   end
 
   def new

@@ -3,14 +3,18 @@
   transition: transform 500ms ease;
   transform-origin: top center;
   transform: scaley(0);
+  overflow: hidden;
+  height: 0;
 }
 
 .retract {
   transform: scaley(0);
+  height: 0
 }
 
 .expand {
   transform: scaley(1);
+  height: auto;
 }
 
 .nav-btn,
