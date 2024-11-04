@@ -9,7 +9,7 @@
 
 .retract {
   transform: scaley(0);
-  height: 0
+  height: 0;
 }
 
 .expand {
