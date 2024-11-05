@@ -11,8 +11,8 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="flex flex-col">
+  <body class='min-h-screen flex flex-col'>
+    <main class="flex flex-grow flex-col">
       <nav class="bg-group-blue w-auto h-24 flex flex-row justify-between">
         <div class="mr-32 p-4" >
           <%= link_to (image_tag "group-logo.png", alt: "group logo", size:"50x50", loading: "lazy"), root_path  %>
@@ -67,9 +67,9 @@
         </ul>
       </nav>
 
-      <div class="pl-6 mt-12"><%= yield %></div>
+      <div class="pl-6 mt-12 flex-grow"><%= yield %></div>
       <footer class="flex items-center justify-center">
-        <span class="bg-red-100 border border-red-500 text-red-700 px-4 py-3 rounded">This website is for demontration purposes only and everything on this website is fictional.</span>
+        <span class="bg-red-100 border border-red-500 text-red-700 px-4 py-3 rounded">This website is for demontration purposes only and information on this website is not accurate.</span>
       </footer>
     </main>
   </body>
