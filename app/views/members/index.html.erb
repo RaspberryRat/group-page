@@ -120,10 +120,10 @@
   </thead>
   <% @members.each do |member| %>
     <tr>
-      <td class="text-center text-blue-700 hover:text-lg hover:scale-125 border border-gray-200">
+      <td class="text-center text-blue-700 hover:font-bold active:blue-300 border border-gray-200 pl-3 pr-3">
         <%= link_to member.full_name, member_path(member) %>
       </td>
-      <td class="text-center text-blue-700 hover:text-lg hover:scale-125 border border-gray-200">
+      <td class="text-center text-blue-700 hover:font-bold active:blue-300 border border-gray-200 pl-3 pr-3">
         <%= link_to member.email, member_path(member)%>
       </td>
       <td class="text-center border border-gray-200">
