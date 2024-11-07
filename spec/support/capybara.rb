@@ -1,5 +1,5 @@
 require 'capybara/rspec'
-require 'webdrivers'
+require 'selenium/webdriver'
 
 Capybara.register_driver :selenium_chrome do |app|
   Capybara::Selenium::Driver.new(

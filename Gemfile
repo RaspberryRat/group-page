@@ -52,7 +52,6 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'webdrivers'
 end
 
 group :development do
