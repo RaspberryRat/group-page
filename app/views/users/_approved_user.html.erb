@@ -1,8 +1,8 @@
 <tr id="user_<%= user.id %>">
-  <td class="text-center text-blue-700 hover:text-lg hover:scale-125 border border-gray-200">
+  <td class="text-center text-blue-700 hover:scale-125 border border-gray-200">
     <%= link_to user.id, user_path(user.id) %>
   </td>
-  <td class="text-center text-blue-700 hover:text-lg hover:scale-125 border border-gray-200">
+  <td class="text-center text-blue-700 hover:scale-125 border border-gray-200">
     <%= link_to user.email, user_path(user.id) %>
   </td>
   <td class="text-center border border-gray-200" data-controller="auto-submit">
