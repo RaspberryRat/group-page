@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'activity/index'
   get 'executives/index'
   root 'posts#index'
 

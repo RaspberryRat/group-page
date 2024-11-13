@@ -1,0 +1,23 @@
+<div>
+  <h1 class="font-bold text-4xl">Activity Dashboard</h1>
+
+  <table class="w-4/5 border-separate border-spacing-2 mt-6 divide-y divide-gray-200">
+    <thead>
+      <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">User</th>
+      <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Post_id</th>
+      <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Action</th>
+      <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Time</th>
+    </thead>
+    <tbody>
+      <% @activities.each do |a|  %>
+        <tr>
+          <td class="text-center border border-gray-200"><%= a.user.email %></td>
+          <td class="text-center border border-gray-200 text-blue-700 hover:font-bold active:blue-300 border border-gray-200 pl-3 pr-3"><%= link_to a.post.title, a.post %></td>
+          <td class="text-center border border-gray-200"><%= a.action %></td>
+          <td class="text-center border border-gray-200"><%= a.readable_time %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
