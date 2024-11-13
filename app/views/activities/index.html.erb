@@ -13,7 +13,17 @@
       <% @activities.each do |a|  %>
         <tr>
           <td class="text-center border border-gray-200"><%= a.user.email %></td>
-          <td class="text-center border border-gray-200 text-blue-700 hover:font-bold active:blue-300 border border-gray-200 pl-3 pr-3"><%= link_to a.post.title, a.post %></td>
+          <td class="text-center border border-gray-200 text-blue-700 hover:font-bold active:blue-300 border border-gray-200 pl-3 pr-3">
+            <% if a.action== 'deleted' %>
+              <span class="text-red-500">Post Deleted</span>
+            <% else %>
+              <% if a.post.present? %>
+                <%= link_to a.post.title, a.post %>
+              <% else %>
+                <span class="text-gray-500">Post no longer exists</span>
+              <% end %>
+            <% end%>
+            </td>
           <td class="text-center border border-gray-200"><%= a.action %></td>
           <td class="text-center border border-gray-200"><%= a.readable_time %></td>
         </tr>

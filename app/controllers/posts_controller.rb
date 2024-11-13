@@ -67,6 +67,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    Activity.create(user: current_user, action: 'deleted', timestamp: Time.current)
     @post.destroy
 
     redirect_to root_path, status: :see_other

@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tags
   has_many :activities
 
+  before_destroy :nullify_post_activities
   after_create :log_creation
   after_update :log_update
 
@@ -26,5 +27,9 @@ class Post < ApplicationRecord
 
   def log_update
     activities.create(user: user, action: 'updated', timestamp: Time.current)
+  end
+
+  def nullify_post_activities
+    activities.update_all(post_id: nil)
   end
 end
