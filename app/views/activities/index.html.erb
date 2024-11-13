@@ -2,6 +2,7 @@
   <h1 class="font-bold text-4xl">Activity Dashboard</h1>
 
   <table class="w-4/5 border-separate border-spacing-2 mt-6 divide-y divide-gray-200">
+    <caption>Activity Table</caption>
     <thead>
       <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">User</th>
       <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Post_id</th>
@@ -19,5 +20,41 @@
       <% end %>
     </tbody>
   </table>
+
+    <table class="w-4/5 border-separate border-spacing-2 mt-6 divide-y divide-gray-200">
+      <caption>User Table</caption>
+      <thead>
+        <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">User</th>
+        <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Sign In Count</th>
+        <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Current Sign In</th>
+        <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Last Sign In</th>
+        <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Current Sign In IP</th>
+        <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">Last Sign In IP</th>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+             <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">
+              <%= user.email %>
+            </td>
+             <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">
+              <%= user.sign_in_count %>
+            </td>
+             <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">
+              <%= user.current_sign_in_at&.strftime('%Y-%m-%d %H:%M') %>
+            </td>
+             <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">
+              <%= user.last_sign_in_at&.strftime('%Y-%m-%d %H:%M') %>
+            </td>
+             <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">
+              <%= user.current_sign_in_ip %>
+            </td>
+             <th class="text-gray-500 tracking-wider border border-gray-200 bg-gray-50">
+              <%= user.last_sign_in_ip %>
+            </td>
+          </tr>
+          <% end %>
+      </tbody>
+    </table>
 
 </div>
