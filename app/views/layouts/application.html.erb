@@ -19,6 +19,9 @@
         </div>
 
         <ul class="flex flex-row gap-5 text-white justify-center pt-8">
+          <% if user_signed_in? && current_user.super_user? %>
+            <%= link_to 'Dashboard', activities_path %>
+          <% end %>
           <% if user_signed_in? && current_user.admin? %>
             <li class="text-inherit nav-btn">
               <%= link_to "User List", users_path  %>
