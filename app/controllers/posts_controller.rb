@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authorized_poster, except: [:show, :index]
+
   def index
     @future_events = Event.future
     @tags = Tag.all
@@ -17,7 +18,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
 
     # Check for new tag on the post
     if params[:new_tag].present?

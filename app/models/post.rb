@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   has_rich_text :content
 
+  belongs_to :user
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
   has_many :activities
@@ -21,5 +22,9 @@ class Post < ApplicationRecord
 
   def log_creation
     activities.create(user: user, action: 'created', timestamp: Time.current)
+  end
+
+  def log_update
+    activities.create(user: user, action: 'updated', timestamp: Time.current)
   end
 end
